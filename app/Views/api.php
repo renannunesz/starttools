@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Informe os filtros desejados:</h5>
 
-                    <form method="GET" action="<?php base_url('PI/filtros');?>" name="formFiltros" id="formFiltros">
+                    <form method="POST" action='<?php echo base_url('public/PI/filtros') ?>' name="formFiltros" id="formFiltros">
 
                         <div class="row g-3 align-items-center mb-2">
 
@@ -60,7 +60,8 @@
 
                             <div class="col-auto">
                                 
-                                <input type="submit" value="Teste Post" name="filtrar" id="filtrar">
+                                <input type="submit" value="Filtrar" name="filtrar" id="filtrar">
+
                             </div>
 
                         </div>
@@ -117,7 +118,7 @@
                         <td scope="row"><?php echo $pi['cliente']; ?></td>
                         <td scope="row"><?php echo $pi['cliente_cnpj']; ?></td>
                         <td scope="row"><?php echo $pi['data_da_venda']; ?></td>
-                        <td scope="row"><?php echo $pi['descricao_servico'] . ' TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . ' DATA VEICULAÇÃO: ' . date('d/m/Y', strtotime(end($pi['periodo_veiculacao'])['periodo_ate'])); ?></td>
+                        <td scope="row"><?php echo $pi['descricao_servico'] . ' - TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . ' - DATA VEICULAÇÃO: ' . date('d/m/Y', strtotime(end($pi['periodo_veiculacao'])['periodo_ate'])); ?></td>
                         <td scope="row"><?php echo $pi['valor_liquido']; ?></td>
                         <td scope="row"><?php echo '3501'; ?></td>
                         <td scope="row"><?php echo '2408102'; ?></td>

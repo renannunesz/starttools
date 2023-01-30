@@ -34,7 +34,7 @@ $routes->set404Override();
 $routes->get('/', 'PI::index');
 $routes->get('/PI/homologAPI', 'PI::homologAPI');
 $routes->get('/PI/exportar', 'PI::exportar');
-$routes->get('/PI/filtros', 'PI::filtros');
+$routes->post('/PI/filtros', 'PI::filtros');
 $routes->post('/PI/export', 'PI::export');
 
 

@@ -58,20 +58,17 @@ class PI extends BaseController
 
     public function filtros()
     {
-        $filtroData     = $this->request->getGet('dataPI');
-        $filtroEmissao  = $this->request->getGet('tpemissaoPI');
-        $filtroEmpresa  = $this->request->getGet('empresaPI');
-
         $dados = $this->recebeDados();
 
         //return 'Data: ' . $filtroData . ' Empresa: ' . $filtroEmpresa . ' Tipo Emissao: ' . $filtroEmissao; 
 
-        $filtroAplicado = array_filter($dados, function($dados) { return $dados['empresa_prestadora'] == $this->request->getGet('empresaPI'); });
+        $filtroEmpresa = array_filter($dados, function($dados) { return $dados['empresa_prestadora'] == $this->request->getPost('empresaPI'); });
+        $filtroEmissao = array_filter($dados, function($dados) { return $dados['emitido_por'] == $this->request->getPost('tpemissaoPI'); });
+        $filtroData = array_filter($dados, function($dados) { return $dados['data_da_venda'] == $this->request->getPost('dataPI'); });
 
         return view('api', [
-            'dados_pi' => $filtroAplicado,
+            'dados_pi' => $filtroEmpresa,
         ]);
-
     }
 
     public function homologAPI()
