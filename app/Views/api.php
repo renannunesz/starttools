@@ -107,8 +107,6 @@
                         <th scope="col">Num. NF</th>
                         <th scope="col">Cod. Produto</th>
                         <th scope="col">Forma de Pagamento</th>
-                        <th scope="col">Emissão</th>
-                        <th scope="col">Veiculação</th>
                         <th scope="col">Empresa</th>
                     </tr>
                 </thead>
@@ -119,15 +117,13 @@
                         <td scope="row"><?php echo $pi['cliente']; ?></td>
                         <td scope="row"><?php echo $pi['cliente_cnpj']; ?></td>
                         <td scope="row"><?php echo $pi['data_da_venda']; ?></td>
-                        <td scope="row"><?php echo $pi['descricao_servico']; ?></td>
+                        <td scope="row"><?php echo $pi['descricao_servico'] . ' TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . ' DATA VEICULAÇÃO: ' . date('d/m/Y', strtotime(end($pi['periodo_veiculacao'])['periodo_ate'])); ?></td>
                         <td scope="row"><?php echo $pi['valor_liquido']; ?></td>
                         <td scope="row"><?php echo '3501'; ?></td>
                         <td scope="row"><?php echo '2408102'; ?></td>
                         <td scope="row"><?php echo '1'; ?></td>
                         <td scope="row"><?php echo '354932'; ?></td>
                         <td scope="row"><?php echo '8'; ?></td>
-                        <td scope="row"><?php echo $pi['emitido_por']; ?></td>
-                        <td scope="row"><?php echo end($pi['periodo_veiculacao'])['periodo_ate']; ?></td>
                         <td scope="row"><?php echo $pi['empresa_prestadora']; ?></td>
                     </tr>
                 <?php endforeach; ?>
