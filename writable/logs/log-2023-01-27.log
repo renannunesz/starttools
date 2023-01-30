@@ -1,0 +1,22 @@
+CRITICAL - 2023-01-27 18:31:16 --> Undefined array key "data_da_venda"
+in APPPATH\Views\api.php on line 15.
+ 1 APPPATH\Views\api.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "data_da_venda"', 'APPPATH\\Views\\api.php', 15)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\api.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('api', [], true)
+ 5 APPPATH\Controllers\Home.php(46): view('api', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-27 18:32:28 --> Undefined array key "data_da_venda"
+in APPPATH\Views\api.php on line 15.
+ 1 APPPATH\Views\api.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "data_da_venda"', 'APPPATH\\Views\\api.php', 15)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\api.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('api', [], true)
+ 5 APPPATH\Controllers\Home.php(46): view('api', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

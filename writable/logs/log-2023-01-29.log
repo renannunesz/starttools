@@ -1,0 +1,286 @@
+CRITICAL - 2023-01-29 14:55:03 --> Undefined array key "periodo_ate"
+in APPPATH\Controllers\PI.php on line 104.
+ 1 APPPATH\Controllers\PI.php(104): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "periodo_ate"', 'APPPATH\\Controllers\\PI.php', 104)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->exportar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-29 16:13:24 --> file_put_contents(./tmp_html/1675008804.html): Failed to open stream: No such file or directory
+in APPPATH\Controllers\PI.php on line 129.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_put_contents(./tmp_html/1675008804.html): Failed to open stream: No such file or directory', 'APPPATH\\Controllers\\PI.php', 129)
+ 2 APPPATH\Controllers\PI.php(129): file_put_contents('./tmp_html/1675008804.html', '<table>
+                <thead class="table-success align-middle">
+                    <tr>
+                        <th scope="col">Cliente/Fornecedor</th>
+                        <th scope="col">CNPJ/CPF</th>
+                        <th scope="col">Registro</th>
+                        <th scope="col">Obs</th>
+                        <th scope="col">Valor Liquido</th>
+                        <th scope="col">Cod. Serviço</th>
+                        <th scope="col">Cod. Mun. Prestador</th>
+                        <th scope="col">Num. NF</th>
+                        <th scope="col">Cod. Produto</th>
+                        <th scope="col">Forma de Pagamento</th>
+                        <th scope="col">Emissão</th>
+                        <th scope="col">Veiculação</th>
+                        <th scope="col">Empresa</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr>
+                        <td scope="row">CESUP REDE BRASILIA / PLATAFORMA BRASILIA (DF)</td>
+                        <td scope="row">00.000.000/5844-01</td>
+                        <td scope="row">13/01/2022</td>
+                        <td scope="row">PI: 15489/2021EDITAL DE NOTIFICAÇÃO - ESPÓLIO DE JOÃO JORGE FILHOFORMATO 2 X 12 - DIA 13.01.2022 VALOR BRUTO: R$ 1.127,52COMISSAO DA AGÊNCIA: R$ 225,50VALOR LÍQUIDO: R$ 902,02</td>
+                        <td scope="row">902,02</td>
+                        <td scope="row">3501</td>
+                        <td scope="row">2408102</td>
+                        <td scope="row">326</td>
+                        <td scope="row">354932</td>
+                        <td scope="row">8</td>
+                        <td scope="row">NOTA FISCAL</td>
+                        <td scope="row">2022-01-13</td>
+                        <td scope="row">PARAMETRO AGENCIA DE NOTICIAS</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">CESUP REDE BRASILIA / PLATAFORMA BRASILIA (DF)</td>
+                        <td scope="row">00.000.000/5844-01</td>
+                        <td scope="row">13/01/2022</td>
+                        <td scope="row">PI: 15489/2021EDITAL DE NOTIFICAÇÃO - ESPÓLIO DE JOÃO JORGE FILHOFORMATO 2 X 12 - DIA 13.01.2022 VALOR BRUTO: R$ 1.127,52COMISSAO DA AGÊNCIA: R$ 225,50VALOR LÍQUIDO: R$ 902,02</td>
+                        <td scope="row">902,02</td>
+                        <td scope="row">3501</td>
+                        <td scope="row">2408102</td>
+                        <td scope="row">326</td>
+                        <td scope="row">354932</td>
+                        <td scope="row">8</td>
+                        <td scope="row">NOTA FISCAL</td>
+                        <td scope="row">2022-01-13</td>
+                        <td scope="row">PARAMETRO AGENCIA DE NOTICIAS</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">CESUP REDE BRASILIA / PLATAFORMA BRASILIA (DF)</td>
+                        <td scope="row">00.000.000/5844-01</td>
+                        <td scope="row">13/01/2022</td>
+                        <td scope="row">PI: 15489/2021EDITAL DE NOTIFICAÇÃO - ESPÓLIO DE JOÃO JORGE FILHOFORMATO 2 X 12 - DIA 13.01.2022 VALOR BRUTO: R$ 1.127,52COMISSAO DA AGÊNCIA: R$ 225,50VALOR LÍQUIDO: R$ 902,02</td>
+                        <td scope="row">902,02</td>
+                        <td scope="row">3501</td>
+                        <td scope="row">2408102</td>
+                        <td scope="row">326</td>
+                        <td scope="row">354932</td>
+                        <td scope="row">8</td>
+                        <td scope="row">NOTA FISCAL</td>
+                        <td scope="row">2022-01-13</td>
+                        <td scope="row">PARAMETRO AGENCIA DE NOTICIAS</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">CESUP REDE BRASILIA / PLATAFORMA BRASILIA (DF)</td>
+                        <td scope="row">00.000.000/5844-01</td>
+                        <td scope="row">13/01/2022</td>
+                        <td scope="row">PI: 15489/2021EDITAL DE NOTIFICAÇÃO - ESPÓLIO DE JOÃO JORGE FILHOFORMATO 2 X 12 - DIA 13.01.2022 VALOR BRUTO: R$ 1.127,52COMISSAO DA AGÊNCIA: R$ 225,50VALOR LÍQUIDO: R$ 902,02</td>
+                        <td scope="row">902,02</td>
+                        <td scope="row">3501</td>
+                        <td scope="row">2408102</td>
+                        <td scope="row">326</td>
+                        <td scope="row">354932</td>
+                        <td scope="row">8</td>
+                        <td scope="row">NOTA FISCAL</td>
+                        <td scope="row">2022-01-13</td>
+                        <td scope="row">PARAMETRO AGENCIA DE NOTICIAS</td>
+                    </tr>
+                </tbody>
+            </table>')
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->export()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-29 20:23:33 --> file_put_contents(./tmp_html/1675023813.html): Failed to open stream: No such file or directory
+in APPPATH\Controllers\PI.php on line 129.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_put_contents(./tmp_html/1675023813.html): Failed to open stream: No such file or directory', 'APPPATH\\Controllers\\PI.php', 129)
+ 2 APPPATH\Controllers\PI.php(129): file_put_contents('./tmp_html/1675023813.html', '<table>
+                <thead class="table-success align-middle">
+                    <tr>
+                        <th scope="col">Cliente/Fornecedor</th>
+                        <th scope="col">CNPJ/CPF</th>
+                        <th scope="col">Registro</th>
+                        <th scope="col">Obs</th>
+                        <th scope="col">Valor Liquido</th>
+                        <th scope="col">Cod. Serviço</th>
+                        <th scope="col">Cod. Mun. Prestador</th>
+                        <th scope="col">Num. NF</th>
+                        <th scope="col">Cod. Produto</th>
+                        <th scope="col">Forma de Pagamento</th>
+                        <th scope="col">Emissão</th>
+                        <th scope="col">Veiculação</th>
+                        <th scope="col">Empresa</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr>
+                        <td scope="row">CESUP REDE BRASILIA / PLATAFORMA BRASILIA (DF)</td>
+                        <td scope="row">00.000.000/5844-01</td>
+                        <td scope="row">13/01/2022</td>
+                        <td scope="row">PI: 15489/2021EDITAL DE NOTIFICAÇÃO - ESPÓLIO DE JOÃO JORGE FILHOFORMATO 2 X 12 - DIA 13.01.2022 VALOR BRUTO: R$ 1.127,52COMISSAO DA AGÊNCIA: R$ 225,50VALOR LÍQUIDO: R$ 902,02</td>
+                        <td scope="row">902,02</td>
+                        <td scope="row">3501</td>
+                        <td scope="row">2408102</td>
+                        <td scope="row">326</td>
+                        <td scope="row">354932</td>
+                        <td scope="row">8</td>
+                        <td scope="row">NOTA FISCAL</td>
+                        <td scope="row">2022-01-13</td>
+                        <td scope="row">PARAMETRO AGENCIA DE NOTICIAS</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">CESUP REDE BRASILIA / PLATAFORMA BRASILIA (DF)</td>
+                        <td scope="row">00.000.000/5844-01</td>
+                        <td scope="row">13/01/2022</td>
+                        <td scope="row">PI: 15489/2021EDITAL DE NOTIFICAÇÃO - ESPÓLIO DE JOÃO JORGE FILHOFORMATO 2 X 12 - DIA 13.01.2022 VALOR BRUTO: R$ 1.127,52COMISSAO DA AGÊNCIA: R$ 225,50VALOR LÍQUIDO: R$ 902,02</td>
+                        <td scope="row">902,02</td>
+                        <td scope="row">3501</td>
+                        <td scope="row">2408102</td>
+                        <td scope="row">326</td>
+                        <td scope="row">354932</td>
+                        <td scope="row">8</td>
+                        <td scope="row">NOTA FISCAL</td>
+                        <td scope="row">2022-01-13</td>
+                        <td scope="row">PARAMETRO AGENCIA DE NOTICIAS</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">CESUP REDE BRASILIA / PLATAFORMA BRASILIA (DF)</td>
+                        <td scope="row">00.000.000/5844-01</td>
+                        <td scope="row">13/01/2022</td>
+                        <td scope="row">PI: 15489/2021EDITAL DE NOTIFICAÇÃO - ESPÓLIO DE JOÃO JORGE FILHOFORMATO 2 X 12 - DIA 13.01.2022 VALOR BRUTO: R$ 1.127,52COMISSAO DA AGÊNCIA: R$ 225,50VALOR LÍQUIDO: R$ 902,02</td>
+                        <td scope="row">902,02</td>
+                        <td scope="row">3501</td>
+                        <td scope="row">2408102</td>
+                        <td scope="row">326</td>
+                        <td scope="row">354932</td>
+                        <td scope="row">8</td>
+                        <td scope="row">NOTA FISCAL</td>
+                        <td scope="row">2022-01-13</td>
+                        <td scope="row">PARAMETRO AGENCIA DE NOTICIAS</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">CESUP REDE BRASILIA / PLATAFORMA BRASILIA (DF)</td>
+                        <td scope="row">00.000.000/5844-01</td>
+                        <td scope="row">13/01/2022</td>
+                        <td scope="row">PI: 15489/2021EDITAL DE NOTIFICAÇÃO - ESPÓLIO DE JOÃO JORGE FILHOFORMATO 2 X 12 - DIA 13.01.2022 VALOR BRUTO: R$ 1.127,52COMISSAO DA AGÊNCIA: R$ 225,50VALOR LÍQUIDO: R$ 902,02</td>
+                        <td scope="row">902,02</td>
+                        <td scope="row">3501</td>
+                        <td scope="row">2408102</td>
+                        <td scope="row">326</td>
+                        <td scope="row">354932</td>
+                        <td scope="row">8</td>
+                        <td scope="row">NOTA FISCAL</td>
+                        <td scope="row">2022-01-13</td>
+                        <td scope="row">PARAMETRO AGENCIA DE NOTICIAS</td>
+                    </tr>
+                </tbody>
+            </table>')
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->export()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-29 21:00:37 --> F:\Projetos\agorarn\app\Views\tmp_htmlpedidos_1675026037.html is an Invalid HTML file.
+in VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\Html.php on line 646.
+ 1 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\Html.php(210): PhpOffice\PhpSpreadsheet\Reader\Html->loadIntoExisting('APPPATH\\Views\\tmp_htmlpedidos_1675026037.html', Object(PhpOffice\PhpSpreadsheet\Spreadsheet))
+ 2 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\BaseReader.php(172): PhpOffice\PhpSpreadsheet\Reader\Html->loadSpreadsheetFromFile('APPPATH\\Views\\tmp_htmlpedidos_1675026037.html')
+ 3 APPPATH\Controllers\PI.php(133): PhpOffice\PhpSpreadsheet\Reader\BaseReader->load('APPPATH\\Views\\tmp_htmlpedidos_1675026037.html')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->export()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-29 21:01:45 --> F:\Projetos\agorarn\app\Views\tmp_html\pedidos_1675026105.html is an Invalid HTML file.
+in VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\Html.php on line 646.
+ 1 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\Html.php(210): PhpOffice\PhpSpreadsheet\Reader\Html->loadIntoExisting('APPPATH\\Views\\tmp_html\\pedidos_1675026105.html', Object(PhpOffice\PhpSpreadsheet\Spreadsheet))
+ 2 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\BaseReader.php(172): PhpOffice\PhpSpreadsheet\Reader\Html->loadSpreadsheetFromFile('APPPATH\\Views\\tmp_html\\pedidos_1675026105.html')
+ 3 APPPATH\Controllers\PI.php(133): PhpOffice\PhpSpreadsheet\Reader\BaseReader->load('APPPATH\\Views\\tmp_html\\pedidos_1675026105.html')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->export()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-29 21:02:39 --> F:\Projetos\agorarn\app\Views\tmp_htmlpedidos_1675026159.html is an Invalid HTML file.
+in VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\Html.php on line 646.
+ 1 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\Html.php(210): PhpOffice\PhpSpreadsheet\Reader\Html->loadIntoExisting('APPPATH\\Views\\tmp_htmlpedidos_1675026159.html', Object(PhpOffice\PhpSpreadsheet\Spreadsheet))
+ 2 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\BaseReader.php(172): PhpOffice\PhpSpreadsheet\Reader\Html->loadSpreadsheetFromFile('APPPATH\\Views\\tmp_htmlpedidos_1675026159.html')
+ 3 APPPATH\Controllers\PI.php(133): PhpOffice\PhpSpreadsheet\Reader\BaseReader->load('APPPATH\\Views\\tmp_htmlpedidos_1675026159.html')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->export()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-29 21:03:20 --> F:\Projetos\agorarn\app\Views\tmp_html1675026200.html is an Invalid HTML file.
+in VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\Html.php on line 646.
+ 1 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\Html.php(210): PhpOffice\PhpSpreadsheet\Reader\Html->loadIntoExisting('APPPATH\\Views\\tmp_html1675026200.html', Object(PhpOffice\PhpSpreadsheet\Spreadsheet))
+ 2 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\BaseReader.php(172): PhpOffice\PhpSpreadsheet\Reader\Html->loadSpreadsheetFromFile('APPPATH\\Views\\tmp_html1675026200.html')
+ 3 APPPATH\Controllers\PI.php(133): PhpOffice\PhpSpreadsheet\Reader\BaseReader->load('APPPATH\\Views\\tmp_html1675026200.html')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->export()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-29 21:12:37 --> F:\Projetos\agorarn\app\Views\tmp_html1675026757.html is an Invalid HTML file.
+in VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\Html.php on line 646.
+ 1 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\Html.php(210): PhpOffice\PhpSpreadsheet\Reader\Html->loadIntoExisting('APPPATH\\Views\\tmp_html1675026757.html', Object(PhpOffice\PhpSpreadsheet\Spreadsheet))
+ 2 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\BaseReader.php(172): PhpOffice\PhpSpreadsheet\Reader\Html->loadSpreadsheetFromFile('APPPATH\\Views\\tmp_html1675026757.html')
+ 3 APPPATH\Controllers\PI.php(133): PhpOffice\PhpSpreadsheet\Reader\BaseReader->load('APPPATH\\Views\\tmp_html1675026757.html')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->export()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-29 21:14:25 --> F:\Projetos\agorarn\app\Views\tmp_html1675026865.html is an Invalid HTML file.
+in VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\Html.php on line 646.
+ 1 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\Html.php(210): PhpOffice\PhpSpreadsheet\Reader\Html->loadIntoExisting('APPPATH\\Views\\tmp_html1675026865.html', Object(PhpOffice\PhpSpreadsheet\Spreadsheet))
+ 2 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\BaseReader.php(172): PhpOffice\PhpSpreadsheet\Reader\Html->loadSpreadsheetFromFile('APPPATH\\Views\\tmp_html1675026865.html')
+ 3 APPPATH\Controllers\PI.php(133): PhpOffice\PhpSpreadsheet\Reader\BaseReader->load('APPPATH\\Views\\tmp_html1675026865.html')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->export()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-29 21:15:35 --> F:\Projetos\agorarn\app\Views\tmp_html1675026935.html is an Invalid HTML file.
+in VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\Html.php on line 646.
+ 1 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\Html.php(210): PhpOffice\PhpSpreadsheet\Reader\Html->loadIntoExisting('APPPATH\\Views\\tmp_html1675026935.html', Object(PhpOffice\PhpSpreadsheet\Spreadsheet))
+ 2 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\BaseReader.php(172): PhpOffice\PhpSpreadsheet\Reader\Html->loadSpreadsheetFromFile('APPPATH\\Views\\tmp_html1675026935.html')
+ 3 APPPATH\Controllers\PI.php(133): PhpOffice\PhpSpreadsheet\Reader\BaseReader->load('APPPATH\\Views\\tmp_html1675026935.html')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->export()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-29 21:16:24 --> F:\Projetos\agorarn\app\Views\tmp_html1675026984.html is an Invalid HTML file.
+in VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\Html.php on line 646.
+ 1 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\Html.php(210): PhpOffice\PhpSpreadsheet\Reader\Html->loadIntoExisting('APPPATH\\Views\\tmp_html1675026984.html', Object(PhpOffice\PhpSpreadsheet\Spreadsheet))
+ 2 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Reader\BaseReader.php(172): PhpOffice\PhpSpreadsheet\Reader\Html->loadSpreadsheetFromFile('APPPATH\\Views\\tmp_html1675026984.html')
+ 3 APPPATH\Controllers\PI.php(133): PhpOffice\PhpSpreadsheet\Reader\BaseReader->load('APPPATH\\Views\\tmp_html1675026984.html')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->export()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-29 22:49:21 --> count(): Argument #1 ($value) must be of type Countable|array, null given
+in APPPATH\Views\api.php on line 118.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('api', [], true)
+ 4 APPPATH\Controllers\PI.php(57): view('api')
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->index()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-29 22:49:22 --> count(): Argument #1 ($value) must be of type Countable|array, null given
+in APPPATH\Views\api.php on line 118.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('api', [], true)
+ 4 APPPATH\Controllers\PI.php(57): view('api')
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->index()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-29 22:52:00 --> Undefined array key 0
+in APPPATH\Views\api.php on line 121.
+ 1 APPPATH\Views\api.php(121): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'APPPATH\\Views\\api.php', 121)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\api.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('api', [], true)
+ 5 APPPATH\Controllers\PI.php(72): view('api', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->filtros()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
