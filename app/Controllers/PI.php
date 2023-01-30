@@ -15,16 +15,16 @@ class PI extends BaseController
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'agorarn.datavence.com.br/api/private/faturamentosLiberados',
+        CURLOPT_URL => 'https://agorarn.datavence.com.br/api/private/faturamentosLiberados',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
         CURLOPT_TIMEOUT => 0,
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_CUSTOMREQUEST => 'GET',
         CURLOPT_POST => true,
-        CURLOPT_POSTFIELDS => array('numero_pi' => '15489/2021'),
+        //CURLOPT_POSTFIELDS => array('numero_pi' => '15489/2021'),
         CURLOPT_HTTPHEADER => array(
             'Authorization: Basic 408fb3e9b90a4c59b34628b3b80fbe64'
         ),
@@ -78,6 +78,7 @@ class PI extends BaseController
     {
         return view('homolog', [
             'dados_pi' => $this->recebeDados(),
+            'baseurl' => base_url(),
         ]);
     }
 
@@ -139,7 +140,7 @@ class PI extends BaseController
 
         if ( isset($dadosTabela) ) {
 
-            $temporary_html_file = 'F:\Projetos\agorarn\app\Views\tmp_html' . time() . '.html';
+            $temporary_html_file = 'C:\xampp\htdocs\agorarn\app\Views\tmp_html' . time() . '.html';
 
             file_put_contents($temporary_html_file, $dadosTabela);
 
