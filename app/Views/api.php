@@ -80,7 +80,7 @@
     </div>
 
     <div class="table-responsive">
-        <form method="POST" action="PI/export" name="formTab" id="formTab">
+        <form method="POST" action="public/PI/export" name="formTab" id="formTab">
 
             <div class="card">
                 <div class="card-header">

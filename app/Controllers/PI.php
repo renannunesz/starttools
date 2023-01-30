@@ -22,7 +22,7 @@ class PI extends BaseController
         CURLOPT_TIMEOUT => 0,
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => 'GET',
+        CURLOPT_CUSTOMREQUEST => 'POST',
         CURLOPT_POST => true,
         //CURLOPT_POSTFIELDS => array('numero_pi' => '15489/2021'),
         CURLOPT_HTTPHEADER => array(
@@ -140,7 +140,7 @@ class PI extends BaseController
 
         if ( isset($dadosTabela) ) {
 
-            $temporary_html_file = 'C:\xampp\htdocs\agorarn\app\Views\tmp_html' . time() . '.html';
+            $temporary_html_file = 'C:\xampp\htdocs\tmp_html' . time() . '.html';
 
             file_put_contents($temporary_html_file, $dadosTabela);
 
