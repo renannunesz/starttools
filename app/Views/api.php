@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Informe os filtros desejados:</h5>
 
-                    <form method="POST" action='<?php echo base_url('public/PI/filtros') ?>' name="formFiltros" id="formFiltros">
+                    <form method="POST" action='<?php echo base_url('public/PI/filtros'); ?>' name="formFiltros" id="formFiltros">
 
                         <div class="row g-3 align-items-center mb-2">
 
@@ -81,7 +81,7 @@
     </div>
 
     <div class="table-responsive">
-        <form method="POST" action="public/PI/export" name="formTab" id="formTab">
+        <form method="POST" action='<?php echo base_url('public/PI/export') ?>' name="formTab" id="formTab">
 
             <div class="card">
                 <div class="card-header">
