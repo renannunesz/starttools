@@ -109,23 +109,24 @@
                         <th scope="col">Cod. Produto</th>
                         <th scope="col">Forma de Pagamento</th>
                         <th scope="col">Empresa</th>
+                        <th scope="col">Tipo de Emissão</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
-
-                <?php foreach($dados_pi as $pi): ?>
+                    <?php foreach($dados_pi as $pi): ?>
                     <tr>
                         <td scope="row"><?php echo $pi['cliente']; ?></td>
                         <td scope="row"><?php echo $pi['cliente_cnpj']; ?></td>
                         <td scope="row"><?php echo $pi['data_da_venda']; ?></td>
-                        <td scope="row"><?php echo $pi['descricao_servico'] . ' - TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . ' - DATA VEICULAÇÃO: ' . date('d/m/Y', strtotime(end($pi['periodo_veiculacao'])['periodo_ate'])); ?></td>
-                        <td scope="row"><?php echo $pi['valor_liquido']; ?></td>
+                        <td scope="row"><?php echo 'TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . " - " . $pi['descricao_servico'] . ' - DATA VEICULAÇÃO: ' . date('d/m/Y', strtotime(end($pi['periodo_veiculacao'])['periodo_ate'])); ?></td>
+                        <td scope="row"><?php echo str_replace(".", "", $pi['valor_liquido']); ?></td>
                         <td scope="row"><?php echo '3501'; ?></td>
                         <td scope="row"><?php echo '2408102'; ?></td>
-                        <td scope="row"><?php echo '1'; ?></td>
-                        <td scope="row"><?php echo '354932'; ?></td>
+                        <td scope="row"><?php echo substr((int) filter_var($pi['nr_pi'], FILTER_SANITIZE_NUMBER_INT).date('isu'),2,6); ?></td>
+                        <td scope="row"><?php echo $pi['empresa_prestadora'] == "A. DE O. VIANA – (GRUPO AGORA/RN)" ? '354932' : '356028' ; ?></td>
                         <td scope="row"><?php echo '8'; ?></td>
                         <td scope="row"><?php echo $pi['empresa_prestadora']; ?></td>
+                        <td scope="row"><?php echo $pi['emitido_por']; ?></td> 
                     </tr>
                 <?php endforeach; ?>
 

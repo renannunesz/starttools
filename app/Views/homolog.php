@@ -79,10 +79,6 @@
     <pre>
         <?php
 
-            echo base_url('assets/favicon.ico');
-            echo '<br>';
-            echo $baseurl;
-            echo '<br>';
             var_dump($dados_pi);        
             
         ?>

@@ -1,0 +1,155 @@
+CRITICAL - 2023-02-01 17:08:45 --> Undefined variable $baseurl
+in APPPATH\Views\homolog.php on line 84.
+ 1 APPPATH\Views\homolog.php(84): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $baseurl', 'APPPATH\\Views\\homolog.php', 84)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\homolog.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('homolog', [], true)
+ 5 APPPATH\Controllers\PI.php(80): view('homolog', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->homologAPI()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 17:09:18 --> Undefined variable $baseurl
+in APPPATH\Views\homolog.php on line 84.
+ 1 APPPATH\Views\homolog.php(84): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $baseurl', 'APPPATH\\Views\\homolog.php', 84)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\homolog.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('homolog', [], true)
+ 5 APPPATH\Controllers\PI.php(80): view('homolog', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->homologAPI()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 17:12:46 --> number_format(): Argument #1 ($num) must be of type float, string given
+in APPPATH\Views\api.php on line 123.
+ 1 APPPATH\Views\api.php(123): number_format('902,02')
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\api.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('api', [], true)
+ 5 APPPATH\Controllers\PI.php(57): view('api', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 17:18:10 --> Allowed memory size of 536870912 bytes exhausted (tried to allocate 69487520 bytes)
+in VENDORPATH\kint-php\kint\src\Renderer\RichRenderer.php on line 580.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-02-01 17:21:35 --> Allowed memory size of 536870912 bytes exhausted (tried to allocate 69487520 bytes)
+in VENDORPATH\kint-php\kint\src\Renderer\RichRenderer.php on line 580.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-02-01 17:22:10 --> Allowed memory size of 536870912 bytes exhausted (tried to allocate 63103608 bytes)
+in VENDORPATH\kint-php\kint\src\Renderer\RichRenderer.php on line 580.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-02-01 17:23:05 --> Allowed memory size of 536870912 bytes exhausted (tried to allocate 69487520 bytes)
+in VENDORPATH\kint-php\kint\src\Renderer\RichRenderer.php on line 580.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-02-01 17:24:42 --> Allowed memory size of 536870912 bytes exhausted (tried to allocate 69487520 bytes)
+in VENDORPATH\kint-php\kint\src\Renderer\RichRenderer.php on line 580.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-02-01 17:29:41 --> Allowed memory size of 536870912 bytes exhausted (tried to allocate 69487520 bytes)
+in VENDORPATH\kint-php\kint\src\Renderer\RichRenderer.php on line 580.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-02-01 17:30:41 --> Allowed memory size of 536870912 bytes exhausted (tried to allocate 69487520 bytes)
+in VENDORPATH\kint-php\kint\src\Renderer\RichRenderer.php on line 580.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-02-01 17:44:24 --> json_decode(): Argument #1 ($json) must be of type string, array given
+in APPPATH\Controllers\PI.php on line 42.
+ 1 APPPATH\Controllers\PI.php(42): json_decode([...], true)
+ 2 APPPATH\Controllers\PI.php(56): App\Controllers\PI->recebeDados()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->index()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 18:07:40 --> Allowed memory size of 536870912 bytes exhausted (tried to allocate 69487520 bytes)
+in VENDORPATH\kint-php\kint\src\Renderer\RichRenderer.php on line 580.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-02-01 18:08:37 --> Allowed memory size of 536870912 bytes exhausted (tried to allocate 63103608 bytes)
+in VENDORPATH\kint-php\kint\src\Renderer\RichRenderer.php on line 580.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-02-01 18:21:31 --> Call to undefined function now()
+in APPPATH\Views\api.php on line 65.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('api', [], true)
+ 4 APPPATH\Controllers\PI.php(58): view('api', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->index()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 19:05:11 --> Undefined variable $filtroData
+in APPPATH\Views\api.php on line 104.
+ 1 APPPATH\Views\api.php(104): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $filtroData', 'APPPATH\\Views\\api.php', 104)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\api.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('api', [], true)
+ 5 APPPATH\Controllers\PI.php(60): view('api', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 19:14:53 --> json_decode(): Argument #1 ($json) must be of type string, array given
+in APPPATH\Controllers\PI.php on line 45.
+ 1 APPPATH\Controllers\PI.php(45): json_decode([...], true)
+ 2 APPPATH\Controllers\PI.php(67): App\Controllers\PI->recebeDados()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->filtros()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 19:16:45 --> count(): Argument #1 ($value) must be of type Countable|array, null given
+in APPPATH\Views\api.php on line 88.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('api', [], true)
+ 4 APPPATH\Controllers\PI.php(78): view('api', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->filtros()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 19:17:13 --> count(): Argument #1 ($value) must be of type Countable|array, int given
+in APPPATH\Views\api.php on line 88.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('api', [], true)
+ 4 APPPATH\Controllers\PI.php(60): view('api', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->index()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 19:17:48 --> count(): Argument #1 ($value) must be of type Countable|array, int given
+in APPPATH\Views\api.php on line 88.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('api', [], true)
+ 4 APPPATH\Controllers\PI.php(60): view('api', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->index()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 19:20:50 --> json_decode(): Argument #1 ($json) must be of type string, array given
+in APPPATH\Controllers\PI.php on line 45.
+ 1 APPPATH\Controllers\PI.php(45): json_decode([...], true)
+ 2 APPPATH\Controllers\PI.php(67): App\Controllers\PI->recebeDados()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->filtros()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 19:56:12 --> json_decode(): Argument #1 ($json) must be of type string, array given
+in APPPATH\Controllers\PI.php on line 45.
+ 1 APPPATH\Controllers\PI.php(45): json_decode([...], true)
+ 2 APPPATH\Controllers\PI.php(68): App\Controllers\PI->recebeDados()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->filtros()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-01 20:00:14 --> array_count_values(): Can only count string and integer values, entry skipped
+in APPPATH\Views\api.php on line 88.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'array_count_values(): Can only count string and integer values, entry skipped', 'APPPATH\\Views\\api.php', 88)
+ 2 APPPATH\Views\api.php(88): array_count_values([...])
+ 3 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\api.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('api', [], true)
+ 6 APPPATH\Controllers\PI.php(75): view('api', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\PI->filtros()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PI))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

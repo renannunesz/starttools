@@ -11,7 +11,6 @@ class PI extends BaseController
 {
     function recebeDados()
     {
-        
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -24,7 +23,11 @@ class PI extends BaseController
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'POST',
         CURLOPT_POST => true,
-        //CURLOPT_POSTFIELDS => array('numero_pi' => '15489/2021'),
+        CURLOPT_POSTFIELDS => array(
+            //'numero_pi' => '15489/2021',
+            'data_inicio' => '2023-01-01',
+            'data_fim' => date('Y-m-d'),
+        ),
         CURLOPT_HTTPHEADER => array(
             'Authorization: Basic 408fb3e9b90a4c59b34628b3b80fbe64'
         ),
@@ -39,6 +42,7 @@ class PI extends BaseController
         $dados = json_decode($response, true);
 
         return $dados;
+
     }
 
     public function contPI()
@@ -68,14 +72,14 @@ class PI extends BaseController
 
         return view('api', [
             'dados_pi' => $filtroEmpresa,
+            'data_pi' => $filtroData
         ]);
     }
 
     public function homologAPI()
     {
         return view('homolog', [
-            'dados_pi' => $this->recebeDados(),
-            'baseurl' => base_url(),
+            'dados_pi' => $this->recebeDados()
         ]);
     }
 
