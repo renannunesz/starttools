@@ -32,10 +32,14 @@ $routes->set404Override();
 //$routes->get('/', 'Home::index');
 //$routes->get('/PI', 'PI::index');
 $routes->get('/', 'PI::index');
+$routes->get('/PI/index', 'PI::index');
 $routes->get('/PI/homologAPI', 'PI::homologAPI');
 $routes->get('/PI/exportar', 'PI::exportar');
+
+//POST
 $routes->post('/PI/filtros', 'PI::filtros');
 $routes->post('/PI/export', 'PI::export');
+$routes->post('/PI/index', 'PI::index');
 
 
 /*

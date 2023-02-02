@@ -9,7 +9,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class PI extends BaseController
 {
-    function recebeDados()
+    function recebeDados($dataInicio)
     {
         $curl = curl_init();
 
@@ -25,7 +25,7 @@ class PI extends BaseController
         CURLOPT_POST => true,
         CURLOPT_POSTFIELDS => array(
             //'numero_pi' => '15489/2021',
-            'data_inicio' => '2023-01-01',
+            'data_inicio' => $dataInicio,
             'data_fim' => date('Y-m-d'),
         ),
         CURLOPT_HTTPHEADER => array(
@@ -45,35 +45,29 @@ class PI extends BaseController
 
     }
 
-    public function contPI()
-    {
-        return count($this->recebeDados());
-    }
-
     public function index()
     {
 
+        $this->request->getPost('dataPI') == null ? $inpData = '01-01-2023' : $inpData = $this->request->getPost('dataPI') ;
+
+        $dados = $this->recebeDados($inpData);
+        
+        $filtros = array_filter($dados, 
+            function($dados) {                 
+
+                $this->request->getPost('empresaPI') == null ? $inpEmpresa = null : $inpEmpresa = $this->request->getPost('empresaPI') ;
+
+                return $dados['empresa_prestadora'] == $inpEmpresa;
+            }
+        );
+        
+        $inpRPS = $this->request->getPost('rpsPI');
+
         return view('api', [
-            'dados_pi' => $this->recebeDados(),
-            'qtd_pi' => $this->contPI()
+            'dados_pi' => $filtros,
+            'inp_RPS' => $inpRPS,
         ]);
         
-    }
-
-    public function filtros()
-    {
-        $dados = $this->recebeDados();
-
-        //return 'Data: ' . $filtroData . ' Empresa: ' . $filtroEmpresa . ' Tipo Emissao: ' . $filtroEmissao; 
-
-        $filtroEmpresa = array_filter($dados, function($dados) { return $dados['empresa_prestadora'] == $this->request->getPost('empresaPI'); });
-        $filtroEmissao = array_filter($dados, function($dados) { return $dados['emitido_por'] == $this->request->getPost('tpemissaoPI'); });
-        $filtroData = array_filter($dados, function($dados) { return $dados['data_da_venda'] == $this->request->getPost('dataPI'); });
-
-        return view('api', [
-            'dados_pi' => $filtroEmpresa,
-            'data_pi' => $filtroData
-        ]);
     }
 
     public function homologAPI()
@@ -81,58 +75,6 @@ class PI extends BaseController
         return view('homolog', [
             'dados_pi' => $this->recebeDados()
         ]);
-    }
-
-    public function exportar()
-    {
-        $piDados = $this->recebeDados();
-        $piQtd = $this->contPI();
-        $tabDados = new Spreadsheet();
-        
-        $tab = $tabDados->getActiveSheet();
-
-        $tab->setCellValue('A1', 'Nome Cliente/Fornecedor');
-        $tab->setCellValue('B1', 'CNPJ/CPF');
-        $tab->setCellValue('C1', 'Data Registro');
-        $tab->setCellValue('D1', 'Observação');
-        $tab->setCellValue('E1', 'Valor Total');
-        $tab->setCellValue('F1', 'Cod Serviço');
-        $tab->setCellValue('G1', 'Código Municipio Prestador');
-        $tab->setCellValue('H1', 'Numero NF');
-        $tab->setCellValue('I1', 'Cod. Produto');
-        $tab->setCellValue('J1', 'Forma de Pagamento');
-        $tab->setCellValue('K1', 'Emissao');
-        $tab->setCellValue('L1', 'Veiculação');
-        $tab->setCellValue('M1', 'Empresa');
-        
-        $tab->getStyle('A1:M1')->getFont()->setBold(true);
-
-        for ($i=0; $i < $piQtd ; $i++) { 
-            $tab->setCellValue('A' . $i+2, $piDados[$i]['cliente']);
-            $tab->setCellValue('B' . $i+2, $piDados[$i]['cliente_cnpj']);
-            $tab->setCellValue('C' . $i+2, $piDados[$i]['data_da_venda']);
-            $tab->setCellValue('D' . $i+2, $piDados[$i]['descricao_servico']);
-            $tab->setCellValue('E' . $i+2, $piDados[$i]['valor_liquido']);
-            $tab->setCellValue('F' . $i+2, '3501');
-            $tab->setCellValue('G' . $i+2, '2408102');
-            $tab->setCellValue('H' . $i+2, $i + 1);
-            $tab->setCellValue('I' . $i+2, '354932');
-            $tab->setCellValue('J' . $i+2, '8');
-            $tab->setCellValue('K' . $i+2, $piDados[$i]['emitido_por']);
-            $tab->setCellValue('L' . $i+2, $piDados[$i]['periodo_veiculacao'][$i]['periodo_ate']);
-            $tab->setCellValue('M' . $i+2, $piDados[$i]['empresa_prestadora']);
-        }
-
-        $tab->setTitle('PIs_AgoraRN');
-
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="dados_pis.xls"');
-
-        $writer = new Xlsx($tabDados);
-        //$writer->save('C:\Users\Renan Nunes\Downloads\PIs_AgoraRN.xlsx');
-        $writer->save('php://output');
-
-        return view('api');
     }
 
     public function export()

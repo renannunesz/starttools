@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Informe os filtros desejados:</h5>
 
-                    <form method="POST" action='<?php echo base_url('public/PI/filtros'); ?>' name="formFiltros" id="formFiltros">
+                    <form method="POST" action='<?php echo base_url('/PI/index'); ?>' name="formFiltros" id="formFiltros">
 
                         <div class="row g-3 align-items-center mb-2">
 
@@ -37,17 +37,6 @@
                             </div>
 
                             <div class="col-auto">
-                                <label for="data" class="col-form-label">Tipo Emissão:</label>
-                            </div>
-                            <div class="col-auto">
-                                <select class="form-select" name="tpemissaoPI" id="tpemissaoPI">
-                                    <option selected>-</option>
-                                    <option value="RECIBO">Recibo</option>
-                                    <option value="NOTA FISCAL">Nota Fiscal</option>
-                                </select>
-                            </div>
-
-                            <div class="col-auto">
                                 <label for="data" class="col-form-label">Empresa:</label>
                             </div>
                             <div class="col-auto">
@@ -56,6 +45,13 @@
                                     <option value="A. DE O. VIANA – (GRUPO AGORA/RN)">A. de O. Viana</option>
                                     <option value="PARAMETRO AGENCIA DE NOTICIAS">Parametro Agência de Noticias </option>
                                 </select>
+                            </div>
+
+                            <div class="col-auto">
+                                <label for="data" class="col-form-label">RPS (Atual):</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" class="form-control" name="rpsPI" id="rpsPI" required>
                             </div>
 
                             <div class="col-auto">
@@ -81,11 +77,11 @@
     </div>
 
     <div class="table-responsive">
-        <form method="POST" action='<?php echo base_url('public/PI/export') ?>' name="formTab" id="formTab">
+        <form method="POST" action='<?php echo base_url('/PI/export') ?>' name="formTab" id="formTab">
 
             <div class="card">
                 <div class="card-header">
-                    <strong>Dados Pedidos</strong>
+                    <strong>Número de P.I.s - <?php echo count($dados_pi); ?></strong>
                     <button type="submit" name="salvar" id="salvar" class="btn btn-success btn-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-spreadsheet" viewBox="0 0 16 16">
                             <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V9H3V2a1 1 0 0 1 1-1h5.5v2zM3 12v-2h2v2H3zm0 1h2v2H4a1 1 0 0 1-1-1v-1zm3 2v-2h3v2H6zm4 0v-2h3v1a1 1 0 0 1-1 1h-2zm3-3h-3v-2h3v2zm-7 0v-2h3v2H6z" />
@@ -122,7 +118,7 @@
                         <td scope="row"><?php echo str_replace(".", "", $pi['valor_liquido']); ?></td>
                         <td scope="row"><?php echo '3501'; ?></td>
                         <td scope="row"><?php echo '2408102'; ?></td>
-                        <td scope="row"><?php echo substr((int) filter_var($pi['nr_pi'], FILTER_SANITIZE_NUMBER_INT).date('isu'),2,6); ?></td>
+                        <td scope="row"><?php echo $inp_RPS++; ?></td>
                         <td scope="row"><?php echo $pi['empresa_prestadora'] == "A. DE O. VIANA – (GRUPO AGORA/RN)" ? '354932' : '356028' ; ?></td>
                         <td scope="row"><?php echo '8'; ?></td>
                         <td scope="row"><?php echo $pi['empresa_prestadora']; ?></td>
