@@ -11,6 +11,7 @@ class PI extends BaseController
 {
     function recebeDados($dataInicio)
     {
+        //$dataInicio
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -48,7 +49,7 @@ class PI extends BaseController
     public function index()
     {
 
-        $this->request->getPost('dataPI') == null ? $inpData = '01-01-2023' : $inpData = $this->request->getPost('dataPI') ;
+        $this->request->getPost('dataPI') == null ? $inpData = '2023-01-01' : $inpData = $this->request->getPost('dataPI') ;
 
         $dados = $this->recebeDados($inpData);
         
