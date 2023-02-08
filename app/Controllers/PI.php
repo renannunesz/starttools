@@ -14,7 +14,7 @@ class PI extends BaseController
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://agorarn.datavence.com.br/api/private/faturamentosLiberados',
+        CURLOPT_URL => 'https://agorarn.datavence.com.br/api/private/faturasPI',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -73,7 +73,7 @@ class PI extends BaseController
     public function homologAPI()
     {
         return view('homolog', [
-            'dados_pi' => $this->recebeDados()
+            'dados_pi' => $this->recebeDados('2022-01-01')
         ]);
     }
 
