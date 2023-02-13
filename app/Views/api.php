@@ -120,7 +120,7 @@
                         <td scope="row"><?php echo '3501'; ?></td>
                         <td scope="row"><?php echo '2408102'; ?></td>
                         <td scope="row"><?php echo $inp_RPS++; ?></td>
-                        <td scope="row"><?php echo $pi['empresa_prestadora'] == "A. DE O. VIANA – (GRUPO AGORA/RN)" ? '354932' : '356028' ; ?></td>
+                        <td scope="row"><?php echo $pi['empresa_prestadora'] == "PARAMETRO AGENCIA DE NOTICIAS " ? '356028' : '354932' ; ?></td>
                         <td scope="row"><?php echo '8'; ?></td>
                         <td scope="row"><?php echo $pi['empresa_prestadora']; ?></td>
                         <td scope="row"><?php echo $pi['emitido_por']; ?></td> 
