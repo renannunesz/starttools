@@ -42,8 +42,7 @@
                             <div class="col-auto">
                                 <select class="form-select" name="empresaPI" id="empresaPI" required>
                                     <option value="">-</option>
-                                    <option value="A. DE O. VIANA – (GRUPO AGORA/RN)">A. de O. Viana</option>
-                                    <option value="(BB) - A. DE O. VIANA – (GRUPO AGORA/RN)"> (BB) - A. de O. Viana</option>
+                                    <option value="A. DE O. VIANA">A. de O. Viana</option>                                    
                                     <option value="PARAMETRO AGENCIA DE NOTICIAS">Parametro Agência de Noticias </option>
                                 </select>
                             </div>
