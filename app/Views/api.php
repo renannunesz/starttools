@@ -119,7 +119,7 @@
                         <td scope="row"><?php echo '1007'; ?></td>
                         <td scope="row"><?php echo '2408102'; ?></td>
                         <td scope="row"><?php echo $inp_RPS++; ?></td>
-                        <td scope="row"><?php echo $pi['empresa_prestadora'] == "PARAMETRO AGENCIA DE NOTICIAS " ? '356028' : '354932' ; ?></td>
+                        <td scope="row"><?php echo $pi['empresa_prestadora'] == "PARAMETRO AGENCIA DE NOTICIAS" ? '356028' : '354932' ; ?></td>
                         <td scope="row"><?php echo '8'; ?></td>
                         <td scope="row"><?php echo $pi['empresa_prestadora']; ?></td>
                         <td scope="row"><?php echo $pi['emitido_por']; ?></td> 
