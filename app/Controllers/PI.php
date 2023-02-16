@@ -62,11 +62,8 @@ class PI extends BaseController
             }
         );
         
-        $inpRPS = $this->request->getPost('rpsPI');
-
         return view('api', [
             'dados_pi' => $filtros,
-            'inp_RPS' => $inpRPS,
         ]);
         
     }

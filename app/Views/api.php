@@ -3,11 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
+
     <title>API - Agora RN</title>
     <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+
 </head>
 
 <body>
@@ -43,19 +48,12 @@
                                 <select class="form-select" name="empresaPI" id="empresaPI" required>
                                     <option value="">-</option>
                                     <option value="A. DE O. VIANA">A. de O. Viana</option>                                    
-                                    <option value="PARAMETRO AGENCIA DE NOTICIAS">Parametro Agência de Noticias </option>
+                                    <option value="PARAMETRO AGENCIA DE NOTICIAS">Parametro Agência de Noticias</option>
                                 </select>
-                            </div>
-
-                            <div class="col-auto">
-                                <label for="data" class="col-form-label">RPS (Atual):</label>
-                            </div>
-                            <div class="col-auto">
-                                <input type="text" class="form-control" name="rpsPI" id="rpsPI" required>
-                            </div>
-
-                            <div class="col-auto">
+                            </div>         
                                 
+                            <div class="col-auto">
+
                                 <input type="submit" value="Filtrar" name="filtrar" id="filtrar">
 
                             </div>
@@ -91,7 +89,7 @@
                 </div>
             </div>
 
-            <table class="table table-striped table-sm" id='tab_dados_pi'>
+            <table class="table table-striped table-sm compact hover" id='tab_dados_pi' name='grid_pi'>
                 <thead class="table-success align-middle">
                     <tr>
                         <th scope="col">Cliente/Fornecedor</th>
@@ -101,14 +99,17 @@
                         <th scope="col">Valor Liquido</th>
                         <th scope="col">Cod. Serviço</th>
                         <th scope="col">Cod. Mun. Prestador</th>
-                        <th scope="col">Num. NF</th>
+                        <th scope="col">Num. NF (RPS)</th>
                         <th scope="col">Cod. Produto</th>
                         <th scope="col">Forma de Pagamento</th>
+                        <th scope="col">Data Liberação</th>
+                        <th scope="col">Situação</th>
                         <th scope="col">Empresa</th>
                         <th scope="col">Tipo de Emissão</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
+
                     <?php foreach($dados_pi as $pi): ?>
                     <tr>
                         <td scope="row"><?php echo $pi['cliente']; ?></td>
@@ -118,13 +119,15 @@
                         <td scope="row"><?php echo str_replace(".", "", $pi['valor_liquido']); ?></td>
                         <td scope="row"><?php echo '1007'; ?></td>
                         <td scope="row"><?php echo '2408102'; ?></td>
-                        <td scope="row"><?php echo $inp_RPS++; ?></td>
+                        <td scope="row"><?php echo $pi['id']; ?></td>
                         <td scope="row"><?php echo $pi['empresa_prestadora'] == "PARAMETRO AGENCIA DE NOTICIAS" ? '356028' : '354932' ; ?></td>
                         <td scope="row"><?php echo '8'; ?></td>
+                        <td scope="row"><?php echo $pi['data_liberacao']; ?></td>
+                        <td scope="row"><?php echo $pi['situacao_fatura']; ?></td>
                         <td scope="row"><?php echo $pi['empresa_prestadora']; ?></td>
-                        <td scope="row"><?php echo $pi['emitido_por']; ?></td> 
+                        <td scope="row" class='<?php echo $pi['emitido_por'] == 'RECIBO' ? 'table-info' : 'table-warning' ; ?>'><?php echo $pi['emitido_por']; ?></td>
                     </tr>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
 
                 </tbody>
             </table>
@@ -134,13 +137,20 @@
         </form>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
 
 <script>
     $(document).ready(function() {
+        $('#tab_dados_pi').DataTable({
+            "pageLength": 50,
+            language: {
+            url: 'https://cdn.datatables.net/plug-ins/1.13.2/i18n/pt-BR.json'
+        }
+        });
         $('#salvar').click(function() {
             var conteudo_tab = '<table>';
             conteudo_tab += $('#tab_dados_pi').html();
