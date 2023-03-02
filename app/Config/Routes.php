@@ -40,6 +40,7 @@ $routes->get('/PI/exportar', 'PI::exportar');
 $routes->post('/PI/filtros', 'PI::filtros');
 $routes->post('/PI/export', 'PI::export');
 $routes->post('/PI/index', 'PI::index');
+$routes->post('/PI/gravaStatus', 'PI::gravaStatus');
 
 
 /*

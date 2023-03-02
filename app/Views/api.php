@@ -5,13 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    
+
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.5/css/buttons.dataTables.min.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.5/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.5/js/buttons.html5.min.js"></script>
+
 
     <title>API - Agora RN</title>
     <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+
+    <script>
+        var time = new Date().getTime();
+    </script>
 
 </head>
 
@@ -37,24 +48,35 @@
                             <div class="col-auto">
                                 <label for="data" class="col-form-label">Data:</label>
                             </div>
+
                             <div class="col-auto">
-                                <input type="date" class="form-control" name="dataPI" id="dataPI">
+                                <input type="date" class="form-control" name="dataPI" id="dataPI" value="<?php echo isset($inputdata) ? $inputdata : date('Y-m-d'); ?>">
                             </div>
 
                             <div class="col-auto">
                                 <label for="data" class="col-form-label">Empresa:</label>
                             </div>
+
                             <div class="col-auto">
                                 <select class="form-select" name="empresaPI" id="empresaPI" required>
                                     <option value="">-</option>
-                                    <option value="A. DE O. VIANA">A. de O. Viana</option>                                    
+                                    <option value="A. DE O. VIANA">A. de O. Viana</option>
                                     <option value="PARAMETRO AGENCIA DE NOTICIAS">Parametro Agência de Noticias</option>
                                 </select>
-                            </div>         
-                                
+                            </div>
+
                             <div class="col-auto">
 
-                                <input type="submit" value="Filtrar" name="filtrar" id="filtrar">
+                                <input type="submit" value="Filtrar" name="filtrar" id="filtrar" onclick="showLoad()">
+
+                            </div>
+
+                            <div class="col-auto" id="carregando" class="carregando">
+
+                                <button class="btn btn-success" type="button" disabled>
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    Carregando...
+                                </button>
 
                             </div>
 
@@ -75,66 +97,78 @@
     </div>
 
     <div class="table-responsive">
-        <form method="POST" action='<?php echo base_url('/PI/export') ?>' name="formTab" id="formTab">
 
-            <div class="card">
-                <div class="card-header">
-                    <strong>Número de P.I.s - <?php echo count($dados_pi); ?></strong>
-                    <button type="submit" name="salvar" id="salvar" class="btn btn-success btn-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-spreadsheet" viewBox="0 0 16 16">
-                            <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V9H3V2a1 1 0 0 1 1-1h5.5v2zM3 12v-2h2v2H3zm0 1h2v2H4a1 1 0 0 1-1-1v-1zm3 2v-2h3v2H6zm4 0v-2h3v1a1 1 0 0 1-1 1h-2zm3-3h-3v-2h3v2zm-7 0v-2h3v2H6z" />
-                        </svg>
-                        Salvar
-                    </button>
-                </div>
+        <div class="card">
+            <div class="card-header text-center">
+                <h2>
+                    <span class="badge bg-warning text-dark">
+                        <?php echo "Número de PIs: " . count($dados_pi) . " | Data: " . implode("/", array_reverse(explode("-", $inputdata))) . " | Empresa: " . $inputempresa; ?>
+                    </span>
+                </h2>
             </div>
+        </div>
 
-            <table class="table table-striped table-sm compact hover" id='tab_dados_pi' name='grid_pi'>
-                <thead class="table-success align-middle">
-                    <tr>
-                        <th scope="col">Cliente/Fornecedor</th>
-                        <th scope="col">CNPJ/CPF</th>
-                        <th scope="col">Registro</th>
-                        <th scope="col">Obs</th>
-                        <th scope="col">Valor Liquido</th>
-                        <th scope="col">Cod. Serviço</th>
-                        <th scope="col">Cod. Mun. Prestador</th>
-                        <th scope="col">Num. NF (RPS)</th>
-                        <th scope="col">Cod. Produto</th>
-                        <th scope="col">Forma de Pagamento</th>
-                        <th scope="col">Data Liberação</th>
-                        <th scope="col">Situação</th>
-                        <th scope="col">Empresa</th>
-                        <th scope="col">Tipo de Emissão</th>
-                    </tr>
-                </thead>
-                <tbody class="table-group-divider">
+        <table class="table table-striped table-sm compact hover" id='tab_dados_pi' name='grid_pi'>
+            <thead class="table-success align-middle">
+                <tr>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">CNPJ/CPF</th>
+                    <th scope="col">Registro</th>
+                    <th scope="col">Observação</th>
+                    <th scope="col">Valor Liquido</th>
+                    <th scope="col">Cod. Serviço</th>
+                    <th scope="col">Cod. Municipio</th>
+                    <th scope="col">Num. NF (RPS)</th>
+                    <th scope="col">Cod. Produto</th>
+                    <th scope="col">Forma de Pagamento</th>
+                    <th scope="col">Tipo de Emissão</th>
+                    <th scope="col">Status Atual</th>
+                    <th scope="col">Status NF</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
 
-                    <?php foreach($dados_pi as $pi): ?>
+                <?php foreach ($dados_pi as $pi) : ?>
                     <tr>
                         <td scope="row"><?php echo $pi['cliente']; ?></td>
                         <td scope="row"><?php echo $pi['cliente_cnpj']; ?></td>
                         <td scope="row"><?php echo $pi['data_da_venda']; ?></td>
-                        <td scope="row"><?php echo 'TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . " - " . $pi['descricao_servico'] . ' - DATA VEICULAÇÃO: ' . date('d/m/Y', strtotime(end($pi['periodo_veiculacao'])['periodo_ate'])); ?></td>
+                        <td scope="row"><?php echo 'TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . " - " . $pi['descricao_servico'] . ' - DATA VEICULAÇÃO: ' . date('d/m/Y', strtotime(end($pi['periodo_veiculacao'])['periodo_ate'])) . ' PI: ' . $pi['nr_pi']; ?></td>
                         <td scope="row"><?php echo str_replace(".", "", $pi['valor_liquido']); ?></td>
                         <td scope="row"><?php echo '1007'; ?></td>
                         <td scope="row"><?php echo '2408102'; ?></td>
                         <td scope="row"><?php echo $pi['id']; ?></td>
-                        <td scope="row"><?php echo $pi['empresa_prestadora'] == "PARAMETRO AGENCIA DE NOTICIAS" ? '356028' : '354932' ; ?></td>
+                        <td scope="row"><?php echo $pi['empresa_prestadora'] == "PARAMETRO AGENCIA DE NOTICIAS" ? '356028' : '354932'; ?></td>
                         <td scope="row"><?php echo '8'; ?></td>
-                        <td scope="row"><?php echo $pi['data_liberacao']; ?></td>
-                        <td scope="row"><?php echo $pi['situacao_fatura']; ?></td>
-                        <td scope="row"><?php echo $pi['empresa_prestadora']; ?></td>
-                        <td scope="row" class='<?php echo $pi['emitido_por'] == 'RECIBO' ? 'table-info' : 'table-warning' ; ?>'><?php echo $pi['emitido_por']; ?></td>
+                        <td scope="row"><?php echo $pi['emitido_por']; ?></td>
+                        <td scope="row"><?php foreach ($tbpis as $pis) if ($pis['idpi'] == $pi['id']) : echo "Finalizada";
+                                        else : "Pendente";
+                                        endif; ?></td>
+                        <td scope="row">
+
+                            <form action="<?php echo base_url('/PI/gravaStatus'); ?>" method="POST">
+
+                                <input type="hidden" name="idpi" id="idpi" value="<?php echo $pi['id']; ?>">
+                                <input type="hidden" name="numeropi" id="numeropi" value="<?php echo $pi['nr_pi']; ?>">
+
+                                <div class="col px-0" title="gravar">
+                                    <button class="btn btn-warning btn-sm" value="1">
+                                        Nota Emitida
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-lg" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M4.475 5.458c-.284 0-.514-.237-.47-.517C4.28 3.24 5.576 2 7.825 2c2.25 0 3.767 1.36 3.767 3.215 0 1.344-.665 2.288-1.79 2.973-1.1.659-1.414 1.118-1.414 2.01v.03a.5.5 0 0 1-.5.5h-.77a.5.5 0 0 1-.5-.495l-.003-.2c-.043-1.221.477-2.001 1.645-2.712 1.03-.632 1.397-1.135 1.397-2.028 0-.979-.758-1.698-1.926-1.698-1.009 0-1.71.529-1.938 1.402-.066.254-.278.461-.54.461h-.777ZM7.496 14c.622 0 1.095-.474 1.095-1.09 0-.618-.473-1.092-1.095-1.092-.606 0-1.087.474-1.087 1.091S6.89 14 7.496 14Z" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                            </form>
+
+                        </td>
                     </tr>
-                    <?php endforeach; ?>
+                <?php endforeach; ?>
 
-                </tbody>
-            </table>
+            </tbody>
+        </table>
 
-            <input type="hidden" name="inp_h_tabdados" id="inp_h_tabdados" />
-
-        </form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
@@ -144,19 +178,26 @@
 </html>
 
 <script>
+    function showLoad() {
+        document.getElementById("carregando").style.display = "block";
+    }
+
     $(document).ready(function() {
+
         $('#tab_dados_pi').DataTable({
-            "pageLength": 50,
+            "pageLength": 100,
             language: {
-            url: 'https://cdn.datatables.net/plug-ins/1.13.2/i18n/pt-BR.json'
-        }
+                url: 'https://cdn.datatables.net/plug-ins/1.13.2/i18n/pt-BR.json'
+            },
+            dom: 'Bfrtip',
+            buttons: [
+                'excelHtml5',
+            ]
         });
-        $('#salvar').click(function() {
-            var conteudo_tab = '<table>';
-            conteudo_tab += $('#tab_dados_pi').html();
-            conteudo_tab += '</table>';
-            $('#inp_h_tabdados').val(conteudo_tab);
-            $('#tab_pi').submit();
-        });
+
+        time = (new Date().getTime()) - time;
+
+        $('#carregando').delay(time).fadeOut("slow");
+
     });
 </script>
