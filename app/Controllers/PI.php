@@ -57,7 +57,7 @@ class PI extends BaseController
     public function index()
     {
 
-        $this->request->getPost('dataPI') == null ? $inpData = '2023-01-01' : $inpData = $this->request->getPost('dataPI');                  
+        $this->request->getPost('dataPI') == null ? $inpData = date('Y-m-d') : $inpData = $this->request->getPost('dataPI');                  
 
         $dados = $this->recebeDados($inpData);
 
@@ -135,7 +135,7 @@ class PI extends BaseController
         $this->pisModel->save($this->request->getPost());
 
         return view('api', [
-            'dados_pi' => $this->recebeDados('2023-03-01'),
+            'dados_pi' => $this->recebeDados(date('Y-m-d')),
             'tbpis' => $this->pisModel->find(),
             'inputdata'     => date('Y-m-d'),
             'inputempresa'  => ""
