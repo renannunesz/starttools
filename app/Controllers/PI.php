@@ -18,7 +18,7 @@ class PI extends BaseController
         $this->pisModel = new TbpisModel();
     }
 
-    function recebeDados($dataInicio)
+    function recebeDados($dataInicio,$dataFim)
     {
         //$dataInicio
         $curl = curl_init();
@@ -34,8 +34,8 @@ class PI extends BaseController
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POST => true,
             CURLOPT_POSTFIELDS => '{  
-                "data_fim": "'.date('Y-m-d').'",
-                "data_inicio": "'.$dataInicio.'"              
+                "data_fim": "' . $dataFim . '",
+                "data_inicio": "' . $dataInicio . '"              
             }',
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Basic 408fb3e9b90a4c59b34628b3b80fbe64',
@@ -57,9 +57,11 @@ class PI extends BaseController
     public function index()
     {
 
-        $this->request->getPost('dataPI') == null ? $inpData = date('Y-m-d') : $inpData = $this->request->getPost('dataPI');                  
+        $this->request->getPost('dataPIini') == null ? $inpDataIni = date('Y-m-d') : $inpDataIni = $this->request->getPost('dataPIini');
 
-        $dados = $this->recebeDados($inpData);
+        $this->request->getPost('dataPIfim') == null ? $inpDataFim = date('Y-m-d') : $inpDataFim = $this->request->getPost('dataPIfim');
+
+        $dados = $this->recebeDados($inpDataIni,$inpDataFim);
 
         $filtros = array_filter(
             $dados,
@@ -73,10 +75,49 @@ class PI extends BaseController
 
         $selectEmpresa = $this->request->getPost('empresaPI');
 
+        /*
+        foreach ($filtros as $pit) 
+        {                        
+            $pesquisa = array_search("5709", $pit);
+            #var_dump($pesquisa);
+            #echo "aqui: ";
+            if ($pesquisa !== false) {
+                var_dump($pit);
+            } else {
+                #echo "nao";
+            }                            
+        }    
+        */
+
+        $tbPIs = $this->pisModel->find();
+
+        $pisAbertos = [];
+        $pisFechados = [];
+
+        foreach ($tbPIs as $pitb) {
+            foreach ($filtros as $piapi) {
+                $pesquisa = array_search($pitb['idpi'], $piapi);
+                if ($pesquisa == true) {
+                    $pisFechados[] = $piapi;
+                }
+            }
+        }
+        #var_dump($pisFechados);
+
+        foreach ($filtros as $piapiA) 
+        {
+            $pesquisa2 = array_search($piapiA['id'], array_column($tbPIs,'idpi'));
+            if ($pesquisa2 == false) {
+                $pisAbertos[] = $piapiA;
+            }
+        }
+        #var_dump($pisAbertos);
+
         return view('api', [
-            'dados_pi'      => $filtros,
+            'dados_pi'      => $pisAbertos,
             'tbpis'         => $this->pisModel->find(),
-            'inputdata'     => $inpData,
+            'inputdataini'     => $inpDataIni,
+            'inputdatafim'     => $inpDataFim,
             'inputempresa'  => $selectEmpresa
         ]);
     }
@@ -85,7 +126,7 @@ class PI extends BaseController
     public function homologAPI()
     {
         return view('homolog', [
-            'dados_pi' => $this->recebeDados('2023-02-20')
+            'dados_pi' => $this->recebeDados('2023-02-20',date('Y-m-d'))
         ]);
     }
 
@@ -135,9 +176,10 @@ class PI extends BaseController
         $this->pisModel->save($this->request->getPost());
 
         return view('api', [
-            'dados_pi' => $this->recebeDados(date('Y-m-d')),
+            'dados_pi' => $this->recebeDados(date('Y-m-d'),date('Y-m-d')),
             'tbpis' => $this->pisModel->find(),
-            'inputdata'     => date('Y-m-d'),
+            'inputdataini'     => date('Y-m-d'),
+            'inputdatafim'     => date('Y-m-d'),
             'inputempresa'  => ""
         ]);
     }
