@@ -126,7 +126,7 @@ class PI extends BaseController
     public function homologAPI()
     {
         return view('homolog', [
-            'dados_pi' => $this->recebeDados('2023-02-20',date('Y-m-d'))
+            'dados_pi' => $this->recebeDados(date('Y-m-d'),date('Y-m-d'))
         ]);
     }
 

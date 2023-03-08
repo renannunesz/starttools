@@ -143,7 +143,7 @@
                                 <td scope="row"><?php echo $pi['cliente']; ?></td>
                                 <td scope="row"><?php echo $pi['cliente_cnpj']; ?></td>
                                 <td scope="row"><?php echo $pi['data_da_venda']; ?></td>
-                                <td scope="row"><?php echo 'TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . " - " . $pi['descricao_servico'] . ' - DATA VEICULAÇÃO: ' . date('d/m/Y', strtotime(end($pi['periodo_veiculacao'])['periodo_ate'])) . ' PI: ' . $pi['nr_pi']; ?></td>
+                                <td scope="row"><?php echo empty( $pi['periodo_veiculacao'] ) == true ? "SEM DATA VEICULAÇÃO" : 'TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . " - " . $pi['descricao_servico'] . ' - DATA VEICULAÇÃO: ' . date('d/m/Y', strtotime(end($pi['periodo_veiculacao'])['periodo_ate'])) . ' PI: ' . $pi['nr_pi'] ; ?></td>
                                 <td scope="row"><?php echo str_replace(".", "", $pi['valor_liquido']); ?></td>
                                 <td scope="row"><?php echo '1007'; ?></td>
                                 <td scope="row"><?php echo '2408102'; ?></td>
@@ -202,7 +202,11 @@
             dom: 'Bfrtip',
             buttons: [
                 'excelHtml5',
-            ]
+            ],
+            language: {
+            decimal: ',',
+            thousands: '.',
+        },
         });
 
         time = (new Date().getTime()) - time;
