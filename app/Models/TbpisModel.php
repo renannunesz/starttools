@@ -18,6 +18,8 @@ class TbpisModel extends Model
         'numeropi',
         'idpi',
         'statuspi',
+        'nfpi',
+        'datanfpi'
     ];
 
     // Dates
