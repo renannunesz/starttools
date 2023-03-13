@@ -19,7 +19,7 @@
 
 
     <title>Start Tools</title>
-    <link rel="icon" type="image/x-icon" href='<?php echo base_url()."/assets/favicon_start.ico"; ?>' >
+    <link rel="icon" type="image/x-icon" href='<?php echo base_url() . "/assets/favicon_start.ico"; ?>'>
 
     <script>
         var time = new Date().getTime();
@@ -33,13 +33,13 @@
 
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2">
         <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <img src='<?php echo base_url()."/assets/ico_startbi.png"; ?>' alt="" width="32" height="32" class="rounded-circle me-2">
+            <img src='<?php echo base_url() . "/assets/ico_startbi.png"; ?>' alt="" width="32" height="32" class="rounded-circle me-2">
             <span class="fs-4">Start.Tools</span>
         </a>
     </nav>
 
     <div class="container-fluid ">
-        <div class="row">
+        <div class="row p-1">
 
             <nav class="col-md-2 d-none d-md-block bg-light sidebar " style="width: 200px;">
 
@@ -47,7 +47,7 @@
 
             </nav>
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-1">
 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Pedidos de Inserção - <?php echo uri_string() == "PI/pisLancados" ? "Lançados" : "Baixados"; ?></h1>
@@ -61,7 +61,15 @@
 
                 <div id="tbpis">
 
-                    <?php include 'table_pis.php'; ?>
+                    <?php
+
+                        if (uri_string() == "PI/pisLancados") {
+                            include 'table_pis.php';
+                        } else {
+                            include 'table_baixados.php';
+                        }
+
+                    ?>
 
                 </div>
 

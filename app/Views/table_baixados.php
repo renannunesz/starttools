@@ -40,7 +40,7 @@
                     <th scope="col">Valor Liquido</th>
                     <th scope="col">RPS</th>
                     <th scope="col">Tipo de Emissão</th>
-                    <th scope="col" style="width: 6%">Opções</th>
+                    <th scope="col">Opções</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">

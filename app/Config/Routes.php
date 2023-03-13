@@ -35,7 +35,7 @@ $routes->get('/PI/homologAPI', 'PI::homologAPI');
 $routes->get('/PI/exportar', 'PI::exportar');
 $routes->get('/PI/pisLancados', 'PI::pisLancados');
 $routes->get('/PI/pisBaixados', 'PI::pisBaixados');
-$routes->get('/PI/expAthenas', 'PI::pisBaixados');
+$routes->get('/PI/expAthenas', 'PI::expAthenas');
 
 //POST
 $routes->post('/PI/filtros', 'PI::filtros');
@@ -44,6 +44,7 @@ $routes->post('/PI/index', 'PI::index');
 $routes->post('/PI/gravaStatus', 'PI::gravaStatus');
 $routes->post('/PI/pisLancados', 'PI::pisLancados');
 $routes->post('/PI/pisBaixados', 'PI::pisBaixados');
+$routes->post('/PI/expAthenas', 'PI::expAthenas');
 
 
 /*
