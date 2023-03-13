@@ -118,6 +118,7 @@ class PI extends BaseController
         $inpDataIni = $this->request->getPost('dataini');
         $inpDataFim = $this->request->getPost('datafim');
         $inpEmpresa = $this->request->getPost('empresapi');
+        $inpTipo    = $this->request->getPost('tppi');
 
         $tbPIs = $this->pisModel->find();
         $pis_api = $this->getPI($inpDataIni, $inpDataFim, $inpEmpresa);
@@ -135,7 +136,8 @@ class PI extends BaseController
             'tbpis'             => $this->pisModel->find(),
             'inputdataini'      => $inpDataIni,
             'inputdatafim'      => $inpDataFim,
-            'inputempresa'      => $inpEmpresa
+            'inputempresa'      => $inpEmpresa,
+            'tipopi'            => $inpTipo
         ]);
     }
 
@@ -145,6 +147,7 @@ class PI extends BaseController
         $this->request->getPost('dataPIini') == null ? $inpDataIni = date('Y-m-d') : $inpDataIni = $this->request->getPost('dataPIini');
         $this->request->getPost('dataPIfim') == null ? $inpDataFim = date('Y-m-d') : $inpDataFim = $this->request->getPost('dataPIfim');
         $this->request->getPost('empresaPI') == null ? $inpEmpresa = null : $inpEmpresa = $this->request->getPost('empresaPI');
+        $inpTipo = 1;
 
         $tbPIs = $this->pisModel->find();
         $pis_api = $this->getPI($inpDataIni, $inpDataFim, $inpEmpresa);
@@ -162,16 +165,18 @@ class PI extends BaseController
             'tbpis'         => $this->pisModel->find(),
             'inputdataini'  => $inpDataIni,
             'inputdatafim'  => $inpDataFim,
-            'inputempresa'  => $inpEmpresa
+            'inputempresa'  => $inpEmpresa,
+            'tipopi'        => $inpTipo
         ]);
     }
 
     public function pisBaixados()
     {
 
-        $inpDataIni = $this->request->getPost('dataini');
-        $inpDataFim = $this->request->getPost('datafim');
-        $inpEmpresa = $this->request->getPost('empresapi');
+        $this->request->getPost('dataPIini') == null ? $inpDataIni = date('Y-m-d') : $inpDataIni = $this->request->getPost('dataPIini');
+        $this->request->getPost('dataPIfim') == null ? $inpDataFim = date('Y-m-d') : $inpDataFim = $this->request->getPost('dataPIfim');
+        $this->request->getPost('empresaPI') == null ? $inpEmpresa = null : $inpEmpresa = $this->request->getPost('empresaPI');
+        $inpTipo = 2;
 
         $tbPIs = $this->pisModel->find();
         $pis_api = $this->getPI($inpDataIni, $inpDataFim, $inpEmpresa);
@@ -189,7 +194,8 @@ class PI extends BaseController
             'tbpis'         => $this->pisModel->find(),
             'inputdataini'  => $inpDataIni,
             'inputdatafim'  => $inpDataFim,
-            'inputempresa'  => $inpEmpresa
+            'inputempresa'  => $inpEmpresa,
+            'tipopi'        => $inpTipo
         ]);
     }
 
@@ -255,6 +261,39 @@ class PI extends BaseController
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment; filename="pis_athenas_' . date("dmYHms") . '.xlsx"');
         $writer->save('php://output');
+
+    }
+
+    public function desfasBaixa($idpi)
+    {
+        
+        $inpDataIni = $this->request->getPost('dataini');
+        $inpDataFim = $this->request->getPost('datafim');
+        $inpEmpresa = $this->request->getPost('empresapi');
+        $inpPI      = $this->request->getPost('idpi');         
+        $inpTipo    = $this->request->getPost('tppi');      
+
+        $this->pisModel->where('idpi', $idpi)->delete();
+
+        $tbPIs = $this->pisModel->find();
+        $pis_api = $this->getPI($inpDataIni, $inpDataFim, $inpEmpresa);
+        $pisFechados = [];
+
+        foreach ($pis_api as $pi) {
+            $pifechado = array_search($pi['id'], array_column($tbPIs, 'idpi'));
+            if ($pifechado == true) {
+                $pisFechados[] = $pi;
+            }
+        }
+
+        return view('home', [
+            'dados_pi'      => $pisFechados,
+            'tbpis'         => $this->pisModel->find(),
+            'inputdataini'  => $inpDataIni,
+            'inputdatafim'  => $inpDataFim,
+            'inputempresa'  => $inpEmpresa,
+            'tipopi'        => $inpTipo
+        ]);
 
     }
 }

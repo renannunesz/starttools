@@ -7,7 +7,7 @@
     <div class="card-body">
         <h5 class="card-title">Informe os filtros desejados:</h5>
 
-        <form method="POST" action='<?php echo uri_string() == "PI/pisLancados" ? base_url('/PI/pisLancados') : base_url('/PI/pisBaixados'); ?>' name="formFiltros" id="formFiltros">
+        <form method="POST" action='<?php echo $tipopi == '1' ? base_url('/PI/pisLancados') : base_url('/PI/pisBaixados'); ?>' name="formFiltros" id="formFiltros">
 
             <div class="row g-3 align-items-center mb-2">
 
@@ -66,7 +66,7 @@
     </div>
 
     <div class="card-footer text-muted">
-        Tecnologia - G.MTDS
+        Start.Tools - G.MTDS
     </div>
 
 </div>

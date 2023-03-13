@@ -47,10 +47,10 @@
 
             </nav>
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-1">
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-1 px-1">
 
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Pedidos de Inserção - <?php echo uri_string() == "PI/pisLancados" ? "Lançados" : "Baixados"; ?></h1>
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-1 mb-1 border-bottom">
+                    <h1 class="h2">Pedidos de Inserção - <?php echo $tipopi == '1' ? "Lançados" : "Baixados"; ?></h1>
                 </div>
 
                 <div id="cardfilter" class="p-1">
@@ -59,16 +59,14 @@
 
                 </div>
 
-                <div id="tbpis">
+                <div id="tbpis" class="pb-1 mb-1">
 
                     <?php
+                        
+                        #echo $tipopi == '1' ? "Sim, numero ".$tipopi : "Não, numero " . $tipopi;
 
-                        if (uri_string() == "PI/pisLancados") {
-                            include 'table_pis.php';
-                        } else {
-                            include 'table_baixados.php';
-                        }
-
+                        $tipopi == '1' ? include 'table_pis.php' : include 'table_baixados.php';
+                        
                     ?>
 
                 </div>
