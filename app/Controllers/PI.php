@@ -65,7 +65,7 @@ class PI extends BaseController
     public function homologAPI()
     {
         return view('homolog', [
-            'dados_pi' => $this->getPI('2023-03-01', '2023-03-31', "")
+            'dados_pi' => $this->getPI('2023-03-01', '2023-03-31', "PARAMETRO AGENCIA DE NOTICIAS")
         ]);
     }
 
@@ -227,6 +227,7 @@ class PI extends BaseController
         $sheet->setCellValue('N1', 'UF');
         $sheet->setCellValue('O1', 'Observacao da Parcela');
         $sheet->setCellValue('P1', 'Email');
+        $sheet->setCellValue('Q1', 'Emitido por');
 
         $rowNum = 2;
 
@@ -238,7 +239,7 @@ class PI extends BaseController
                 $sheet->setCellValue('B' . $rowNum, $pi['cliente_cnpj']);
                 $sheet->setCellValue('C' . $rowNum, $pi['data_da_venda']);
                 $sheet->setCellValue('D' . $rowNum, 'TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . " - " . $pi['descricao_servico'] . ' - DATA VEICULAÇÃO: ' . date('d/m/Y', strtotime(end($pi['periodo_veiculacao'])['periodo_ate'])) . ' PI: ' . $pi['nr_pi']);
-                $sheet->setCellValue('E' . $rowNum, str_replace(".", "", $pi['valor_liquido']));
+                $sheet->setCellValue('E' . $rowNum, $pi['tipo_de_fatura'] == "BRUTO C/ CLIENTE" ? str_replace(".", "", $pi['valor_bruto']) : str_replace(".", "", $pi['valor_liquido']));
                 $sheet->setCellValue('F' . $rowNum, '1007');
                 $sheet->setCellValue('G' . $rowNum, '2408102');
                 $sheet->setCellValue('H' . $rowNum, $pi['id']);
@@ -250,6 +251,7 @@ class PI extends BaseController
                 $sheet->setCellValue('N' . $rowNum, $pi['uf_cliente']);
                 $sheet->setCellValue('O' . $rowNum, $pi['nr_pi']);
                 $sheet->setCellValue('P' . $rowNum, $pi['email_cliente']);
+                $sheet->setCellValue('P' . $rowNum, $pi['emitido_por']);
 
                 $rowNum++;
             }
