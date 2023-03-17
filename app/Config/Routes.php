@@ -41,6 +41,7 @@ $routes->get('/PI/expAthenas',  'PI::expAthenas');
 $routes->post('/PI/filtros',        'PI::filtros');
 $routes->post('/PI/export',         'PI::export');
 $routes->post('/PI/index',          'PI::index');
+$routes->post('/PI/homologAPI',     'PI::homologAPI');
 $routes->post('/PI/gravaStatus',    'PI::gravaStatus');
 $routes->post('/PI/pisLancados',    'PI::pisLancados');
 $routes->post('/PI/pisBaixados',    'PI::pisBaixados');

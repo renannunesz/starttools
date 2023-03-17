@@ -64,8 +64,13 @@ class PI extends BaseController
 
     public function homologAPI()
     {
+
+        $this->request->getPost('dtinihomolog') == null ? $dtinihomolog = date('Y-m-d') : $dtinihomolog = $this->request->getPost('dtinihomolog');
+        $this->request->getPost('dtfimhomolog') == null ? $dtfimhomolog = date('Y-m-d') : $dtfimhomolog = $this->request->getPost('dtfimhomolog');
+        $this->request->getPost('empresahomolog') == null ? $empresahomolog = null : $empresahomolog = $this->request->getPost('empresahomolog');
+
         return view('homolog', [
-            'dados_pi' => $this->getPI('2023-03-01', '2023-03-31', "PARAMETRO AGENCIA DE NOTICIAS")
+            'dados_pi' => $this->getPI($dtinihomolog, $dtfimhomolog, $empresahomolog)
         ]);
     }
 
@@ -228,6 +233,7 @@ class PI extends BaseController
         $sheet->setCellValue('O1', 'Observacao da Parcela');
         $sheet->setCellValue('P1', 'Email');
         $sheet->setCellValue('Q1', 'Emitido por');
+        $sheet->setCellValue('R1', 'Data Emissao');
 
         $rowNum = 2;
 
@@ -252,6 +258,7 @@ class PI extends BaseController
                 $sheet->setCellValue('O' . $rowNum, $pi['nr_pi']);
                 $sheet->setCellValue('P' . $rowNum, $pi['email_cliente']);
                 $sheet->setCellValue('Q' . $rowNum, $pi['emitido_por']);
+                $sheet->setCellValue('R' . $rowNum, $pi['data_liberacao']);
 
                 $rowNum++;
             }

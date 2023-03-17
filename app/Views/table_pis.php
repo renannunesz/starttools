@@ -40,6 +40,7 @@
                     <th scope="col">Cliente</th>
                     <th scope="col" style="width: 10%">CNPJ/CPF</th>
                     <th scope="col">Registro</th>
+                    <th scope="col">Emissão</th>
                     <th scope="col">Observação</th>
                     <th scope="col">Valor Liquido</th>
                     <th scope="col">RPS</th>
@@ -56,6 +57,7 @@
                         <td scope="row"><?php echo $pi['cliente']; ?></td>
                         <td scope="row"><?php echo $pi['cliente_cnpj']; ?></td>
                         <td scope="row"><?php echo $pi['data_da_venda']; ?></td>
+                        <td scope="row"><?php echo $pi['data_liberacao']; ?></td>
                         <td scope="row"><?php echo empty($pi['periodo_veiculacao']) == true ? "SEM DATA VEICULAÇÃO" : 'TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . " - " . $pi['descricao_servico'] . ' - DATA VEICULAÇÃO: ' . date('d/m/Y', strtotime(end($pi['periodo_veiculacao'])['periodo_ate'])); ?></td>
                         <td scope="row"><?php echo $pi['tipo_de_fatura'] == "BRUTO C/ CLIENTE" ? str_replace(".", "", $pi['valor_bruto']) : str_replace(".", "", $pi['valor_liquido']) ; ?></td>
                         <td scope="row"><?php echo $pi['id']; ?></td>
