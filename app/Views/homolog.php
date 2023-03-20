@@ -136,37 +136,36 @@
 
 </html>
 
-<!-- JS Code -->
-<script type="text/javascript">
-    $(document).ready(function() {
+    <!-- Data -->
+    <script type="text/javascript" src='data.js'></script> 
 
-        var urlAPI = <?php echo json_encode($dados_pi); ?>;
+    <!-- JS Code -->
+    <script type="text/javascript">
+        $(document).ready(function() {
 
-        for (var i = 0; i < urlAPI.length; i++) {
-            document.write(urlAPI[i]);
-        }
+            var urlAPI = <?php echo json_encode($dados_pi); ?>;
 
-        $("#tbgrid").dxDataGrid({
-            dataSource: urlAPI,
-            paging: {
-                pageSize: 2
-            },
-            allowColumnReordering: true,
-            allowColumnResizing: true,
-            filterRow: {
-                visible: true
-            },
-            selection: {
-                mode: "multiple"
-            },
-            groupPanel: {
-                visible: true
-            },
-            export: {
-                enabled: true,
-                allowExportSelectedData: true,
-            }
+            $("#tbgrid").dxDataGrid({
+                dataSource: data,
+                paging: {
+                    pageSize: 2
+                },
+                allowColumnReordering: true,
+                allowColumnResizing: true,
+                filterRow: {
+                    visible: true
+                },
+                selection: {
+                    mode: "multiple"
+                },
+                groupPanel: {
+                    visible: true
+                },
+                export: {
+                    enabled: true,
+                    allowExportSelectedData: true,
+                }        
+            })
+
         })
-
-    })
-</script>
+    </script>

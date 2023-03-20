@@ -232,8 +232,8 @@ class PI extends BaseController
         $sheet->setCellValue('N1', 'UF');
         $sheet->setCellValue('O1', 'Observacao da Parcela');
         $sheet->setCellValue('P1', 'Email');
-        $sheet->setCellValue('Q1', 'Emitido por');
-        $sheet->setCellValue('R1', 'Data Emissao');
+        $sheet->setCellValue('Q1', 'Data Emissao');
+        $sheet->setCellValue('R1', 'Emitido por');
 
         $rowNum = 2;
 
@@ -257,8 +257,8 @@ class PI extends BaseController
                 $sheet->setCellValue('N' . $rowNum, $pi['uf_cliente']);
                 $sheet->setCellValue('O' . $rowNum, $pi['nr_pi']);
                 $sheet->setCellValue('P' . $rowNum, $pi['email_cliente']);
-                $sheet->setCellValue('Q' . $rowNum, $pi['emitido_por']);
-                $sheet->setCellValue('R' . $rowNum, $pi['data_liberacao']);
+                $sheet->setCellValue('Q' . $rowNum, $pi['data_liberacao']);
+                $sheet->setCellValue('R' . $rowNum, $pi['emitido_por']);
 
                 $rowNum++;
             }
