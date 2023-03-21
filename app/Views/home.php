@@ -38,16 +38,17 @@
         </a>
     </nav>
 
-    <div class="container-fluid ">
-        <div class="row p-1">
+    <div class="container-fluid ">    
 
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar " style="width: 200px;">
+        <div class="row p-1 mw-100">        
+
+            <nav class="col-md-1 d-none d-md-block bg-light sidebar ">            
 
                 <?php include 'side_menu.php'; ?>
 
             </nav>
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-1 px-1">
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-11 pt-1 px-1">            
 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-1 mb-1 border-bottom">
                     <h1 class="h2">Pedidos de Inserção - <?php echo $tipopi == '1' ? "Lançados" : "Baixados"; ?></h1>
@@ -59,7 +60,7 @@
 
                 </div>
 
-                <div id="tbpis" class="pb-1 mb-1">
+                <div id="tbpis" class="pb-1 mb-1" >
 
                     <?php
                         

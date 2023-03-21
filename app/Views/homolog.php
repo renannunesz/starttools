@@ -137,7 +137,7 @@
 </html>
 
     <!-- Data -->
-    <script type="text/javascript" src='data.js'></script> 
+    <script type="text/javascript" src='<?php echo json_encode($dados_pi); ?>'></script> 
 
     <!-- JS Code -->
     <script type="text/javascript">

@@ -40,10 +40,12 @@
                     <th scope="col">Registro</th>
                     <th scope="col">Emissao</th>
                     <th scope="col">Observação</th>
-                    <th scope="col">Valor Liquido</th>
+                    <th scope="col">Valor</th>
                     <th scope="col">RPS</th>
                     <th scope="col">Nº NFSe</th>
                     <th scope="col">Tipo de Emissão</th>
+                    <th scope="col">Data Vencimento</th>
+                    <th scope="col">Forma PG</th>
                     <th scope="col" style="width: 6%">Opções</th>
                 </tr>
             </thead>
@@ -62,6 +64,8 @@
                         <td scope="row"><?php echo $pi['id']; ?></td>
                         <td><?php foreach($tbpis as $pibaixado) if ($pibaixado['idpi'] == $pi['id']) : echo $pibaixado['nfpi']; endif;?></td>
                         <td scope="row"><?php echo $pi['emitido_por']; ?></td>
+                        <td scope="row"><?php echo implode("/", array_reverse(explode("-", $pi['data_vencimento']))); ?></td>
+                        <td scope="row"><?php echo $pi['forma_pagamento']; ?></td>
                         <td scope="row">
 
                             <form action="<?php echo base_url('/PI/desfasBaixa').'/'.$pi['id']; ?>" method="POST">

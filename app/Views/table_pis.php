@@ -42,9 +42,11 @@
                     <th scope="col">Registro</th>
                     <th scope="col">Emissão</th>
                     <th scope="col">Observação</th>
-                    <th scope="col">Valor Liquido</th>
+                    <th scope="col">Valor</th>
                     <th scope="col">RPS</th>
                     <th scope="col">Tipo de Emissão</th>
+                    <th scope="col">Data Vencimento</th>
+                    <th scope="col">Forma PG</th>
                     <th scope="col" style="width: 6%">Opções</th>
                 </tr>
             </thead>
@@ -62,6 +64,8 @@
                         <td scope="row"><?php echo $pi['tipo_de_fatura'] == "BRUTO C/ CLIENTE" ? str_replace(".", "", $pi['valor_bruto']) : str_replace(".", "", $pi['valor_liquido']) ; ?></td>
                         <td scope="row"><?php echo $pi['id']; ?></td>
                         <td scope="row"><?php echo $pi['emitido_por']; ?></td>
+                        <td scope="row"><?php echo implode("/", array_reverse(explode("-", $pi['data_vencimento']))); ?></td>
+                        <td scope="row"><?php echo $pi['forma_pagamento']; ?></td>
                         <td scope="row">
 
                             <form action="<?php echo base_url('/PI/gravaStatus'); ?>" method="POST">
