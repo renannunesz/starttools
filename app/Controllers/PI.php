@@ -34,8 +34,9 @@ class PI extends BaseController
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POST => true,
             CURLOPT_POSTFIELDS => '{  
+                "empresa_prestadora": '.$piEmpresa.', 
                 "data_fim": "' . $piFim . '",
-                "data_inicio": "' . $piInicio . '"              
+                "data_inicio": "' . $piInicio . '"                            
             }',
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Basic 408fb3e9b90a4c59b34628b3b80fbe64',
@@ -51,15 +52,7 @@ class PI extends BaseController
 
         $dados = json_decode($response, true);
 
-        $filtros = array_filter(
-            $dados,
-            function ($dados) use ($piEmpresa) {
-
-                return $dados['empresa_prestadora'] == $piEmpresa;
-            }
-        );
-
-        return $filtros;
+        return $dados;
     }
 
     public function homologAPI()
@@ -67,52 +60,15 @@ class PI extends BaseController
 
         $this->request->getPost('dtinihomolog') == null ? $dtinihomolog = date('Y-m-d') : $dtinihomolog = $this->request->getPost('dtinihomolog');
         $this->request->getPost('dtfimhomolog') == null ? $dtfimhomolog = date('Y-m-d') : $dtfimhomolog = $this->request->getPost('dtfimhomolog');
-        $this->request->getPost('empresahomolog') == null ? $empresahomolog = null : $empresahomolog = $this->request->getPost('empresahomolog');
+        $this->request->getPost('empresahomolog') == null ? $empresahomolog = 0 : $empresahomolog = $this->request->getPost('empresahomolog');
+
+        var_dump($dtinihomolog);
+        var_dump($dtfimhomolog);
+        var_dump($empresahomolog);
 
         return view('homolog', [
             'dados_pi' => $this->getPI($dtinihomolog, $dtfimhomolog, $empresahomolog)
         ]);
-    }
-
-    public function export()
-    {
-        $dadosTabela = $this->request->getPost('inp_h_tabdados');
-
-        if (isset($dadosTabela)) {
-
-            $temporary_html_file = 'C:\xampp\htdocs\tmp_html' . time() . '.html';
-
-            file_put_contents($temporary_html_file, $dadosTabela);
-
-            $reader = IOFactory::createReader('Html');
-
-            $spreadsheet = $reader->load($temporary_html_file);
-
-            $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
-
-            $filename = 'pedidos_' . time() . '.xlsx';
-
-            $writer->save($filename);
-
-            header('Content-Type: application/x-www-form-urlencoded');
-
-            header('Content-Transfer-Encoding: Binary');
-
-            header("Content-disposition: attachment; filename=\"" . $filename . "\"");
-
-            readfile($filename);
-
-            unlink($temporary_html_file);
-
-            unlink($filename);
-
-            exit;
-        } else {
-
-            echo 'não existe, volte';
-        }
-
-        return view('homolog');
     }
 
     public function gravaStatus()
@@ -151,7 +107,7 @@ class PI extends BaseController
 
         $this->request->getPost('dataPIini') == null ? $inpDataIni = date('Y-m-d') : $inpDataIni = $this->request->getPost('dataPIini');
         $this->request->getPost('dataPIfim') == null ? $inpDataFim = date('Y-m-d') : $inpDataFim = $this->request->getPost('dataPIfim');
-        $this->request->getPost('empresaPI') == null ? $inpEmpresa = null : $inpEmpresa = $this->request->getPost('empresaPI');
+        $this->request->getPost('empresaPI') == null ? $inpEmpresa = 0 : $inpEmpresa = $this->request->getPost('empresaPI');
         $inpTipo = 1;
 
         $tbPIs = $this->pisModel->find();
@@ -180,7 +136,7 @@ class PI extends BaseController
 
         $this->request->getPost('dataPIini') == null ? $inpDataIni = date('Y-m-d') : $inpDataIni = $this->request->getPost('dataPIini');
         $this->request->getPost('dataPIfim') == null ? $inpDataFim = date('Y-m-d') : $inpDataFim = $this->request->getPost('dataPIfim');
-        $this->request->getPost('empresaPI') == null ? $inpEmpresa = null : $inpEmpresa = $this->request->getPost('empresaPI');
+        $this->request->getPost('empresaPI') == null ? $inpEmpresa = 0 : $inpEmpresa = $this->request->getPost('empresaPI');
         $inpTipo = 2;
 
         $tbPIs = $this->pisModel->find();
@@ -262,7 +218,6 @@ class PI extends BaseController
 
                 $rowNum++;
             }
-            
         }
 
         $sheet->setTitle('pis_athenas');
@@ -270,17 +225,16 @@ class PI extends BaseController
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment; filename="pis_athenas_' . date("dmYHms") . '.xlsx"');
         $writer->save('php://output');
-
     }
 
     public function desfasBaixa($idpi)
     {
-        
+
         $inpDataIni = $this->request->getPost('dataini');
         $inpDataFim = $this->request->getPost('datafim');
         $inpEmpresa = $this->request->getPost('empresapi');
-        $inpPI      = $this->request->getPost('idpi');         
-        $inpTipo    = $this->request->getPost('tppi');      
+        $inpPI      = $this->request->getPost('idpi');
+        $inpTipo    = $this->request->getPost('tppi');
 
         $this->pisModel->where('idpi', $idpi)->delete();
 
@@ -303,6 +257,94 @@ class PI extends BaseController
             'inputempresa'  => $inpEmpresa,
             'tipopi'        => $inpTipo
         ]);
-
     }
+
+    /*
+    DESUSO
+
+    function getPI_old($piInicio, $piFim, $piEmpresa)
+    {
+        //$dataInicio
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://agorarn.datavence.com.br/api/private/faturasPI',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => '{  
+                "data_fim": "' . $piFim . '",
+                "data_inicio": "' . $piInicio . '"              
+            }',
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Basic 408fb3e9b90a4c59b34628b3b80fbe64',
+                'Content-Type: application/json'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+
+        $response = json_decode($response, true);
+
+        $dados = json_decode($response, true);
+
+        $filtros = array_filter(
+            $dados,
+            function ($dados) use ($piEmpresa) {
+
+                return $dados['empresa_prestadora'] == $piEmpresa;
+            }
+        );
+
+        return $filtros;
+    }
+
+    public function export()
+    {
+        $dadosTabela = $this->request->getPost('inp_h_tabdados');
+
+        if (isset($dadosTabela)) {
+
+            $temporary_html_file = 'C:\xampp\htdocs\tmp_html' . time() . '.html';
+
+            file_put_contents($temporary_html_file, $dadosTabela);
+
+            $reader = IOFactory::createReader('Html');
+
+            $spreadsheet = $reader->load($temporary_html_file);
+
+            $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+
+            $filename = 'pedidos_' . time() . '.xlsx';
+
+            $writer->save($filename);
+
+            header('Content-Type: application/x-www-form-urlencoded');
+
+            header('Content-Transfer-Encoding: Binary');
+
+            header("Content-disposition: attachment; filename=\"" . $filename . "\"");
+
+            readfile($filename);
+
+            unlink($temporary_html_file);
+
+            unlink($filename);
+
+            exit;
+        } else {
+
+            echo 'não existe, volte';
+        }
+
+        return view('homolog');
+    }
+    */
 }

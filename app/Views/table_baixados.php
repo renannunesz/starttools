@@ -1,11 +1,19 @@
 <div class="table-responsive">
 
     <div class="card">
+
         <div class="card-header text-center">
             <div class="">
                 <h3>
                     <span class="badge text-dark" style="background-color:#F2E205">
-                        <?php echo "PIs Baixados: " . count($dados_pi) . " | Inicio: " . implode("/", array_reverse(explode("-", $inputdataini))) . " | Fim: " . implode("/", array_reverse(explode("-", $inputdatafim))) . " | Empresa: " . $inputempresa; ?>
+                        <?php if ($inputempresa == 1) {
+                            $nomeEmpresa = "Parâmetro";
+                        } else {
+                            $nomeEmpresa = "A. de O. Viana";
+                        }
+                        ?>
+
+                        <?php echo "PIs Baixados: " . count($dados_pi) . " | Inicio: " . implode("/", array_reverse(explode("-", $inputdataini))) . " | Fim: " . implode("/", array_reverse(explode("-", $inputdatafim))) . " | Empresa: " . $nomeEmpresa; ?>
                     </span>
                 </h3>
             </div>
@@ -27,6 +35,7 @@
                 </form>
             </div>
         </div>
+        
     </div>
 
     <div class="table-wrapper-scroll-y my-custom-scrollbar pb-1 pt-1 mb-1">
@@ -62,13 +71,14 @@
                         <td scope="row"><?php echo empty($pi['periodo_veiculacao']) == true ? "SEM DATA VEICULAÇÃO" : 'TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . " - " . $pi['descricao_servico'] . ' - DATA VEICULAÇÃO: ' . date('d/m/Y', strtotime(end($pi['periodo_veiculacao'])['periodo_ate'])); ?></td>
                         <td scope="row"><?php echo $pi['tipo_de_fatura'] == "BRUTO C/ CLIENTE" ? str_replace(".", "", $pi['valor_bruto']) : str_replace(".", "", $pi['valor_liquido']); ?></td>
                         <td scope="row"><?php echo $pi['id']; ?></td>
-                        <td><?php foreach($tbpis as $pibaixado) if ($pibaixado['idpi'] == $pi['id']) : echo $pibaixado['nfpi']; endif;?></td>
+                        <td><?php foreach ($tbpis as $pibaixado) if ($pibaixado['idpi'] == $pi['id']) : echo $pibaixado['nfpi'];
+                            endif; ?></td>
                         <td scope="row"><?php echo $pi['emitido_por']; ?></td>
                         <td scope="row"><?php echo implode("/", array_reverse(explode("-", $pi['data_vencimento']))); ?></td>
                         <td scope="row"><?php echo $pi['forma_pagamento']; ?></td>
                         <td scope="row">
 
-                            <form action="<?php echo base_url('/PI/desfasBaixa').'/'.$pi['id']; ?>" method="POST">
+                            <form action="<?php echo base_url('/PI/desfasBaixa') . '/' . $pi['id']; ?>" method="POST">
 
                                 <input type="hidden" name="idpi" id="idpi" value="<?php echo $pi['id']; ?>">
                                 <input type="hidden" name="numeropi" id="numeropi" value="<?php echo $pi['nr_pi']; ?>">
@@ -77,7 +87,7 @@
                                 <input type="hidden" name="empresapi" id="empresapi" value="<?php echo $inputempresa; ?>">
                                 <input type="hidden" name="tppi" id="tppi" value="2">
 
-                                <button type="submit" class="btn btn-danger btn-sm">                                    
+                                <button type="submit" class="btn btn-danger btn-sm">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                                         <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                                     </svg>

@@ -6,7 +6,14 @@
             <div class="">
                 <h3>
                     <span class="badge text-dark" style="background-color:#F2E205">
-                        <?php echo "PIs Lançados: " . count($dados_pi) . " | Inicio: " . implode("/", array_reverse(explode("-", $inputdataini))) . " | Fim: " . implode("/", array_reverse(explode("-", $inputdatafim))) . " | Empresa: " . $inputempresa; ?>
+                        <?php if ($inputempresa == 1) {
+                            $nomeEmpresa = "Parâmetro";
+                        } else {
+                            $nomeEmpresa = "A. de O. Viana";
+                        }
+                        ?>
+
+                        <?php echo "PIs Lançados: " . count($dados_pi) . " | Inicio: " . implode("/", array_reverse(explode("-", $inputdataini))) . " | Fim: " . implode("/", array_reverse(explode("-", $inputdatafim))) . " | Empresa: " . $nomeEmpresa; ?>
                     </span>
                 </h3>
             </div>

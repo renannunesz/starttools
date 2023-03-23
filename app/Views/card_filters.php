@@ -34,8 +34,8 @@
                 <div class="col-auto">
                     <select class="form-select" name="empresaPI" id="empresaPI" required>
                         <option value="">-</option>
-                        <option value="A. DE O. VIANA">A. de O. Viana</option>
-                        <option value="PARAMETRO AGENCIA DE NOTICIAS">Parametro Agência de Noticias</option>
+                        <option value=2>A. de O. Viana</option>
+                        <option value=1>Parametro Agência de Noticias</option>
                     </select>
                 </div>
 

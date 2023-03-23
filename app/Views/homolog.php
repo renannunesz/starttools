@@ -117,11 +117,14 @@
     -->
 
     <form action='<?php echo base_url('/PI/homologAPI'); ?>' method="post">
-        Inicio: <input type="date" name="dtinihomolog" id="dtinihomolog">
-        Fim: <input type="date" name="dtfimhomolog" id="dtfimhomolog">
-        Empresa: <select name="empresahomolog" id="empresahomolog">
-            <option value="A. DE O. VIANA">A. de O. Viana</option>
-            <option value="PARAMETRO AGENCIA DE NOTICIAS">Parametro Agência de Noticias</option>
+        Inicio: 
+        <input type="date" name="dtinihomolog" id="dtinihomolog">
+        Fim: 
+        <input type="date" name="dtfimhomolog" id="dtfimhomolog">
+        Empresa: 
+        <select name="empresahomolog" id="empresahomolog">
+            <option value=2>A. de O. Viana</option>
+            <option value=1>Parametro Agência de Noticias</option>
         </select>
         <input type="submit" value="Buscar">
     </form>
