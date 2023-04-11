@@ -20,10 +20,6 @@
 
 <body>
 
-    <div id="tbgrid" style="width: 100%;">
-
-    </div>
-
     <!--
     <table>
         <thead>
@@ -117,11 +113,11 @@
     -->
 
     <form action='<?php echo base_url('/PI/homologAPI'); ?>' method="post">
-        Inicio: 
+        Inicio:
         <input type="date" name="dtinihomolog" id="dtinihomolog">
-        Fim: 
+        Fim:
         <input type="date" name="dtfimhomolog" id="dtfimhomolog">
-        Empresa: 
+        Empresa:
         <select name="empresahomolog" id="empresahomolog">
             <option value=2>A. de O. Viana</option>
             <option value=1>Parametro Agência de Noticias</option>
@@ -129,9 +125,14 @@
         <input type="submit" value="Buscar">
     </form>
 
+    <div id="tbgrid" style="width: 100%;">
+
+    </div>
+
     <div class="tbhomolog">
         <pre>
-            <?php print_r($dados_pi); ?>
+            <?php var_dump($dados_pi); 
+            ?>
         </pre>
     </div>
 
@@ -139,36 +140,51 @@
 
 </html>
 
-    <!-- Data -->
-    <script type="text/javascript" src='<?php echo json_encode($dados_pi); ?>'></script> 
+<!-- JS Code -->
+<script type="text/javascript">
+    const settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://agorarn.datavence.com.br/api/private/faturamentosLiberados?empresa_prestadora=1&data_inicio=2023-03-20&data_fim=2023-03-31",
+        "method": "POST",
+        "headers": {
+            "Authorization": "Basic 408fb3e9b90a4c59b34628b3b80fbe64",
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "data": {}
+    };
 
-    <!-- JS Code -->
-    <script type="text/javascript">
-        $(document).ready(function() {
+    $.ajax(settings).done(function(response) {
+        console.log(response);
+    });
 
-            var urlAPI = <?php echo json_encode($dados_pi); ?>;
+    $(document).ready(function() {
 
-            $("#tbgrid").dxDataGrid({
-                dataSource: data,
-                paging: {
-                    pageSize: 2
-                },
-                allowColumnReordering: true,
-                allowColumnResizing: true,
-                filterRow: {
-                    visible: true
-                },
-                selection: {
-                    mode: "multiple"
-                },
-                groupPanel: {
-                    visible: true
-                },
-                export: {
-                    enabled: true,
-                    allowExportSelectedData: true,
-                }        
-            })
+        $.ajax(settings).done(function(response) {
+            var dados = response;
+        });
 
+        $("#tbgrid").dxDataGrid({
+            dataSource: dados,
+            paging: {
+                pageSize: 10
+            },
+            allowColumnReordering: true,
+            allowColumnResizing: true,
+            filterRow: {
+                visible: true
+            },
+            selection: {
+                mode: "multiple"
+            },
+            groupPanel: {
+                visible: true
+            },
+            export: {
+                enabled: true,
+                allowExportSelectedData: true,
+            }
         })
-    </script>
+
+    })
+</script>

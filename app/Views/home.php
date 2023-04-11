@@ -32,23 +32,24 @@
     <?php require 'vendor/autoload.php'; ?>
 
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2">
+        <button class="btn btn-dark" onclick="openSide()"> ☰ </button>
         <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <img src='<?php echo base_url() . "/assets/ico_startbi.png"; ?>' alt="" width="32" height="32" class="rounded-circle me-2">
+            <img src='<?php echo base_url() . "/assets/logo_tools.png"; ?>' alt="" width="32" height="32" class="rounded-circle me-2">
             <span class="fs-4">Start.Tools</span>
         </a>
     </nav>
 
-    <div class="container-fluid ">    
+    <div class="container-fluid ">
 
-        <div class="row p-1 mw-100">        
+        <div class="row p-1 mw-100">
 
-            <nav class="col-md-1 d-none d-md-block bg-light sidebar ">            
+            <nav class="col-md-1 d-none d-md-block bg-light sidebar">
 
                 <?php include 'side_menu.php'; ?>
 
             </nav>
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-11 pt-1 px-1">            
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-11 pt-1 px-1">
 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-1 mb-1 border-bottom">
                     <h1 class="h2">Pedidos de Inserção - <?php echo $tipopi == '1' ? "Lançados" : "Baixados"; ?></h1>
@@ -60,19 +61,20 @@
 
                 </div>
 
-                <div id="tbpis" class="pb-1 mb-1" >
+                <div id="tbpis" class="pb-1 mb-1">
 
                     <?php
-                        
-                        #echo $tipopi == '1' ? "Sim, numero ".$tipopi : "Não, numero " . $tipopi;
 
-                        $tipopi == '1' ? include 'table_pis.php' : include 'table_baixados.php';
-                        
+                    #echo $tipopi == '1' ? "Sim, numero ".$tipopi : "Não, numero " . $tipopi;
+
+                    $tipopi == '1' ? include 'table_pis.php' : include 'table_baixados.php';
+
                     ?>
 
                 </div>
 
             </main>
+
         </div>
     </div>
 
@@ -82,6 +84,7 @@
 </html>
 
 <script>
+
     function showLoad() {
         document.getElementById("carregando").style.display = "block";
     }
@@ -100,4 +103,5 @@
         $('#carregando').delay(time).fadeOut("slow");
 
     });
+
 </script>

@@ -24,7 +24,7 @@ class PI extends BaseController
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://agorarn.datavence.com.br/api/private/faturasPI',
+            CURLOPT_URL => 'https://sistema.meusistema.dev.br/api/private/faturasPI', //https://sistema.meusistema.dev.br/api/private/faturamentosLiberados
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -48,9 +48,9 @@ class PI extends BaseController
 
         curl_close($curl);
 
-        $response = json_decode($response, true);
+        $return = json_decode($response, true);
 
-        $dados = json_decode($response, true);
+        $dados = json_decode($return, true);
 
         return $dados;
     }
