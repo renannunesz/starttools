@@ -2,20 +2,22 @@
 
     <div class="card">
 
-        <div class="card-header text-center">            
+        <div class="card-header text-center">
             <div class="">
-                <h3>
-                    <span class="badge text-dark" style="background-color:#F2E205">
-                        <?php if ($inputempresa == 1) {
-                            $nomeEmpresa = "Parâmetro";
-                        } else {
-                            $nomeEmpresa = "A. de O. Viana";
-                        }
-                        ?>
-
-                        <?php echo "PIs Lançados: " . count($dados_pi) . " | Inicio: " . implode("/", array_reverse(explode("-", $inputdataini))) . " | Fim: " . implode("/", array_reverse(explode("-", $inputdatafim))) . " | Empresa: " . $nomeEmpresa; ?>
-                    </span>
-                </h3>
+                <div class="container overflow-hidden text-center">
+                    <?php $inputempresa == 1 ? $nomeEmpresa = "Parâmetro" : $nomeEmpresa = "A. de O. Viana"; ?>
+                    <div class="row gx-6">
+                        <div class="col">
+                            <div class="p-3 h4 text-white bg-dark"><?php echo "Empresa: " . $nomeEmpresa; ?></div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 h4 text-white bg-dark"><?php echo "Inicio: " . implode("/", array_reverse(explode("-", $inputdataini))) . " Fim: " . implode("/", array_reverse(explode("-", $inputdatafim))); ?></div>
+                        </div>
+                        <div class="col">
+                            <div class="p-3 h4 text-white bg-dark"><?php echo "PIs Lançados: " . count($dados_pi); ?></div>
+                        </div>                        
+                    </div>
+                </div>
             </div>
             <div class="d-flex justify-content-end">
                 <form action='<?php echo base_url('/PI/expAthenas'); ?>' method="post">
@@ -68,7 +70,7 @@
                         <td scope="row"><?php echo $pi['data_da_venda']; ?></td>
                         <td scope="row"><?php echo $pi['data_liberacao']; ?></td>
                         <td scope="row"><?php echo empty($pi['periodo_veiculacao']) == true ? "SEM DATA VEICULAÇÃO" : 'TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . " - " . $pi['descricao_servico'] . ' - DATA VEICULAÇÃO: ' . date('d/m/Y', strtotime(end($pi['periodo_veiculacao'])['periodo_ate'])); ?></td>
-                        <td scope="row"><?php echo $pi['tipo_de_fatura'] == "BRUTO C/ CLIENTE" ? str_replace(".", "", $pi['valor_bruto']) : str_replace(".", "", $pi['valor_liquido']) ; ?></td>
+                        <td scope="row"><?php echo $pi['tipo_de_fatura'] == "BRUTO C/ CLIENTE" ? str_replace(".", "", $pi['valor_bruto']) : str_replace(".", "", $pi['valor_liquido']); ?></td>
                         <td scope="row"><?php echo $pi['id']; ?></td>
                         <td scope="row"><?php echo $pi['emitido_por']; ?></td>
                         <td scope="row"><?php echo implode("/", array_reverse(explode("-", $pi['data_vencimento']))); ?></td>
@@ -85,7 +87,7 @@
                                 <input type="hidden" name="tppi" id="tppi" value="1">
 
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#finalizarModal-<?php echo $pi['id']; ?>">                                    
+                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#finalizarModal-<?php echo $pi['id']; ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
                                     </svg>
