@@ -86,7 +86,7 @@ class PI extends BaseController
         $pisAbertos = [];
 
         foreach ($pis_api as $pi) {
-            $pifechado = array_search($pi['id'], array_column($tbPIs, 'idpi'));
+            $pifechado = array_search($pi['id_pi'], array_column($tbPIs, 'idpi'));
             if ($pifechado == false) {
                 $pisAbertos[] = $pi;
             }
@@ -115,7 +115,7 @@ class PI extends BaseController
         $pisAbertos = [];
 
         foreach ($pis_api as $pi) {
-            $pifechado = array_search($pi['id'], array_column($tbPIs, 'idpi'));
+            $pifechado = array_search($pi['id_pi'], array_column($tbPIs, 'idpi'));
             if ($pifechado == false) {
                 $pisAbertos[] = $pi;
             }
@@ -144,7 +144,7 @@ class PI extends BaseController
         $pisFechados = [];
 
         foreach ($pis_api as $pi) {
-            $pifechado = array_search($pi['id'], array_column($tbPIs, 'idpi'));
+            $pifechado = array_search($pi['id_pi'], array_column($tbPIs, 'idpi'));
             if ($pifechado == true) {
                 $pisFechados[] = $pi;
             }
@@ -194,7 +194,7 @@ class PI extends BaseController
         $rowNum = 2;
 
         foreach ($pis_api as $pi) {
-            $pifechado = array_search($pi['id'], array_column($tbPIs, 'idpi'));
+            $pifechado = array_search($pi['id_pi'], array_column($tbPIs, 'idpi'));
             if ($pifechado == false) {
 
                 $sheet->setCellValue('A' . $rowNum, $pi['cliente']);
@@ -204,7 +204,7 @@ class PI extends BaseController
                 $sheet->setCellValue('E' . $rowNum, $pi['tipo_de_fatura'] == "BRUTO C/ CLIENTE" ? str_replace(".", "", $pi['valor_bruto']) : str_replace(".", "", $pi['valor_liquido']));
                 $sheet->setCellValue('F' . $rowNum, '1007');
                 $sheet->setCellValue('G' . $rowNum, '2408102');
-                $sheet->setCellValue('H' . $rowNum, $pi['id']);
+                $sheet->setCellValue('H' . $rowNum, $pi['id_pi']);
                 $sheet->setCellValue('I' . $rowNum, $pi['empresa_prestadora'] == "PARAMETRO AGENCIA DE NOTICIAS" ? '356028' : '354932');
                 $sheet->setCellValue('J' . $rowNum, '8');
                 $sheet->setCellValue('K' . $rowNum, $pi['endereco_cliente'] . " N: " . $pi['endereco_numero_cliente']);
@@ -243,7 +243,7 @@ class PI extends BaseController
         $pisFechados = [];
 
         foreach ($pis_api as $pi) {
-            $pifechado = array_search($pi['id'], array_column($tbPIs, 'idpi'));
+            $pifechado = array_search($pi['id_pi'], array_column($tbPIs, 'idpi'));
             if ($pifechado == true) {
                 $pisFechados[] = $pi;
             }

@@ -72,17 +72,17 @@
                         <td scope="row"><?php echo $pi['data_liberacao']; ?></td>
                         <td scope="row"><?php echo empty($pi['periodo_veiculacao']) == true ? "SEM DATA VEICULAÇÃO" : 'TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . " - " . $pi['descricao_servico'] . ' - DATA VEICULAÇÃO: ' . date('d/m/Y', strtotime(end($pi['periodo_veiculacao'])['periodo_ate'])); ?></td>
                         <td scope="row"><?php echo $pi['tipo_de_fatura'] == "BRUTO C/ CLIENTE" ? str_replace(".", "", $pi['valor_bruto']) : str_replace(".", "", $pi['valor_liquido']); ?></td>
-                        <td scope="row"><?php echo $pi['id']; ?></td>
-                        <td><?php foreach ($tbpis as $pibaixado) if ($pibaixado['idpi'] == $pi['id']) : echo $pibaixado['nfpi'];
+                        <td scope="row"><?php echo $pi['id_pi']; ?></td>
+                        <td><?php foreach ($tbpis as $pibaixado) if ($pibaixado['idpi'] == $pi['id_pi']) : echo $pibaixado['nfpi'];
                             endif; ?></td>
                         <td scope="row"><?php echo $pi['emitido_por']; ?></td>
                         <td scope="row"><?php echo implode("/", array_reverse(explode("-", $pi['data_vencimento']))); ?></td>
                         <td scope="row"><?php echo $pi['forma_pagamento']; ?></td>
                         <td scope="row">
 
-                            <form action="<?php echo base_url('/PI/desfasBaixa') . '/' . $pi['id']; ?>" method="POST">
+                            <form action="<?php echo base_url('/PI/desfasBaixa') . '/' . $pi['id_pi']; ?>" method="POST">
 
-                                <input type="hidden" name="idpi" id="idpi" value="<?php echo $pi['id']; ?>">
+                                <input type="hidden" name="idpi" id="idpi" value="<?php echo $pi['id_pi']; ?>">
                                 <input type="hidden" name="numeropi" id="numeropi" value="<?php echo $pi['nr_pi']; ?>">
                                 <input type="hidden" name="dataini" id="dataini" value="<?php echo $inputdataini; ?>">
                                 <input type="hidden" name="datafim" id="datafim" value="<?php echo $inputdatafim; ?>">

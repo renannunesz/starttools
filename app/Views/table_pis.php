@@ -71,7 +71,7 @@
                         <td scope="row"><?php echo $pi['data_liberacao']; ?></td>
                         <td scope="row"><?php echo empty($pi['periodo_veiculacao']) == true ? "SEM DATA VEICULAÇÃO" : 'TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . " - " . $pi['descricao_servico'] . ' - DATA VEICULAÇÃO: ' . date('d/m/Y', strtotime(end($pi['periodo_veiculacao'])['periodo_ate'])); ?></td>
                         <td scope="row"><?php echo $pi['tipo_de_fatura'] == "BRUTO C/ CLIENTE" ? str_replace(".", "", $pi['valor_bruto']) : str_replace(".", "", $pi['valor_liquido']); ?></td>
-                        <td scope="row"><?php echo $pi['id']; ?></td>
+                        <td scope="row"><?php echo $pi['id_pi']; ?></td>
                         <td scope="row"><?php echo $pi['emitido_por']; ?></td>
                         <td scope="row"><?php echo implode("/", array_reverse(explode("-", $pi['data_vencimento']))); ?></td>
                         <td scope="row"><?php echo $pi['forma_pagamento']; ?></td>
@@ -79,7 +79,7 @@
 
                             <form action="<?php echo base_url('/PI/gravaStatus'); ?>" method="POST">
 
-                                <input type="hidden" name="idpi" id="idpi" value="<?php echo $pi['id']; ?>">
+                                <input type="hidden" name="idpi" id="idpi" value="<?php echo $pi['id_pi']; ?>">
                                 <input type="hidden" name="numeropi" id="numeropi" value="<?php echo $pi['nr_pi']; ?>">
                                 <input type="hidden" name="dataini" id="dataini" value="<?php echo $inputdataini; ?>">
                                 <input type="hidden" name="datafim" id="datafim" value="<?php echo $inputdatafim; ?>">
@@ -87,7 +87,7 @@
                                 <input type="hidden" name="tppi" id="tppi" value="1">
 
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#finalizarModal-<?php echo $pi['id']; ?>">
+                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#finalizarModal-<?php echo $pi['id_pi']; ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                                         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
                                     </svg>
@@ -95,7 +95,7 @@
                                 </button>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="finalizarModal-<?php echo $pi['id']; ?>" aria-labelledby="finalizarModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="finalizarModal-<?php echo $pi['id_pi']; ?>" aria-labelledby="finalizarModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
 
                                         <div class="modal-content">
