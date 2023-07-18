@@ -212,7 +212,7 @@ class PI extends BaseController
                 $sheet->setCellValue('M' . $rowNum, $pi['cep_cliente']);
                 $sheet->setCellValue('N' . $rowNum, $pi['uf_cliente']);
                 $sheet->setCellValue('O' . $rowNum, $pi['nr_pi']);
-                $sheet->setCellValue('P' . $rowNum, $pi['email_cliente']);
+                $sheet->setCellValue('P' . $rowNum, $pi['send_mail_nf']);
                 $sheet->setCellValue('Q' . $rowNum, $pi['data_liberacao']);
                 $sheet->setCellValue('R' . $rowNum, $pi['emitido_por']);
 
