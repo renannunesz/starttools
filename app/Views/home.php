@@ -1,107 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.5/css/buttons.dataTables.min.css">
-
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
-
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.5/js/dataTables.buttons.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.5/js/buttons.html5.min.js"></script>
-
-
     <title>Start Tools</title>
-    <link rel="icon" type="image/x-icon" href='<?php echo base_url() . "/assets/favicon_start.ico"; ?>'>
+    <link rel="icon" type="image/x-icon" href='<?php echo base_url() . "/assets/logo_tools.ico"; ?>'>
 
-    <script>
-        var time = new Date().getTime();
-    </script>
+    <!-- Bootstrap core CSS-->
+    <link rel="stylesheet" href="assets/theme/vendor/bootstrap/css/bootstrap.min.css">
+
+    <!-- Custom fonts for this template-->
+    <link href="assets/theme/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="assets/theme/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="assets/theme/css/sb-admin.css" rel="stylesheet">
+
 
 </head>
 
-<body>
+<body id="page-top">
 
-    <?php require 'vendor/autoload.php'; ?>
+    <?php include 'navbar.php'; ?>
 
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2">
-        <button class="btn btn-dark" onclick="openSide()"> ☰ </button>
-        <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <img src='<?php echo base_url() . "/assets/logo_tools.png"; ?>' alt="" width="32" height="32" class="rounded-circle me-2">
-            <span class="fs-4">Start.Tools</span>
-        </a>
-    </nav>
+    <div id="wrapper">
 
-    <div class="container-fluid ">
+        <?php include 'sidebar.php'; ?>
 
-        <div class="row p-1 mw-100">
+        <div id="content-wrapper">
 
-            <nav class="col-md-1 d-none d-md-block bg-light sidebar">
+            <div class="container-fluid">
 
-                <?php include 'side_menu.php'; ?>
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">P.I.s</a>
+                    </li>
+                    <li class="breadcrumb-item active"> Início </li>
+                </ol>
 
-            </nav>
+                <div class="d-flex justify-content-start">
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-11 pt-1 px-1">
+                    <div class="w-100 m-2">
 
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-1 mb-1 border-bottom">
-                    <h1 class="h2">Pedidos de Inserção - <?php echo $tipopi == '1' ? "Lançados" : "Baixados"; ?></h1>
+                        <div>
+
+                            <div id="" class="p-1">
+
+                                <div class="row d-flex justify-content-center">
+
+                                    <div class="col-xl-6 col-sm-6 mb-3">
+                                        <div class="card text-white bg-primary o-hidden h-100">
+                                            <div class="card-body">
+                                                <div class="card-body-icon">
+                                                    <i class="fas fa-fw fa-city"></i>
+                                                </div>
+                                                <div class="mr-5">
+                                                    <h3> A. de O. Viana </h3>
+                                                </div>
+                                            </div>
+
+                                            <div class="card text-dark">
+                                                <div class="card-header">
+                                                    <strong>Pedidos de Inserção</strong>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="alert alert-info" role="alert">
+                                                        <a href='<?php echo base_url('/PI/pisLancados'); ?>' class="alert-link">Lançados: </a>. <?php echo count($pisLancados_adeo); ?>
+                                                    </div>
+                                                    <div class="alert alert-success" role="alert">
+                                                        <a href='<?php echo base_url('/PI/pisBaixados'); ?>' class="alert-link">Baixados: </a>. <?php echo count($pisBaixados_adeo); ?>
+                                                    </div>
+                                                    <div class="ml-3">
+                                                        <p class="">Info: Dados atuais, com base na data de hoje, <?php echo date('d-m-Y'); ?>.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-footer text-white clearfix small z-1">
+                                                <span class="float-left">
+                                                    Dados Empresa
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-6 col-sm-6 mb-3">
+                                        <div class="card text-white bg-warning o-hidden h-100">
+                                            <div class="card-body">
+                                                <div class="card-body-icon">
+                                                    <i class="fas fa-fw fa-city"></i>
+                                                </div>
+                                                <div class="mr-5">
+                                                    <h3> Parametro Agência de Noticias </h3>
+                                                </div>
+                                            </div>
+
+                                            <div class="card text-dark">
+                                                <div class="card-header">
+                                                    <strong>Pedidos de Inserção</strong>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="alert alert-info" role="alert">
+                                                        <a href='<?php echo base_url('/PI/pisLancados'); ?>' class="alert-link">Lançados: </a>. <?php echo count($pisLancados_parametro); ?>
+                                                    </div>
+                                                    <div class="alert alert-success" role="alert">
+                                                        <a href='<?php echo base_url('/PI/pisBaixados'); ?>' class="alert-link">Baixados: </a>. <?php echo count($pisBaixados_parametro); ?>
+                                                    </div>
+                                                    <div class="ml-3">
+                                                        <p class="">Info: Dados atuais, com base na data de hoje, <?php echo date('d-m-Y'); ?>.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-footer text-white clearfix small z-1">
+                                                <span class="float-left">
+                                                    Dados Empresa
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <?php include 'footer.php'; ?>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div id="cardfilter" class="p-1">
-
-                    <?php include 'card_filters.php'; ?>
-
-                </div>
-
-                <div id="tbpis" class="pb-1 mb-1">
-
-                    <?php
-
-                    #echo $tipopi == '1' ? "Sim, numero ".$tipopi : "Não, numero " . $tipopi;
-
-                    $tipopi == '1' ? include 'table_pis.php' : include 'table_baixados.php';
-
-                    ?>
-
-                </div>
-
-            </main>
+            </div>
 
         </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="assets/theme/vendor/jquery/jquery.min.js"></script>
+        <script src="assets/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="assets/theme/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Page level plugin JavaScript-->
+        <script src="assets/theme/vendor/chart.js/Chart.min.js"></script>
+        <script src="assets/theme/vendor/datatables/jquery.dataTables.js"></script>
+        <script src="assets/theme/vendor/datatables/dataTables.bootstrap4.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="assets/theme/js/sb-admin.min.js"></script>
+
+        <!-- Demo scripts for this page-->
+        <script src="assets/theme/js/demo/datatables-demo.js"></script>
+        <script src="assets/theme/js/demo/chart-area-demo.js"></script>
+
 </body>
 
 </html>
 
 <script>
-
-    function showLoad() {
-        document.getElementById("carregando").style.display = "block";
-    }
-
-    $(document).ready(function() {
-
-        $('#tab_dados_pi').DataTable({
-            "pageLength": 100,
-            language: {
-                url: 'https://cdn.datatables.net/plug-ins/1.13.2/i18n/pt-BR.json'
-            }
-        });
-
-        time = (new Date().getTime()) - time;
-
-        $('#carregando').delay(time).fadeOut("slow");
-
-    });
 
 </script>

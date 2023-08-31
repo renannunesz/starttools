@@ -29,24 +29,27 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'PI::pisLancados');
-$routes->get('/PI/index', 'PI::index');
-$routes->get('/PI/homologAPI',  'PI::homologAPI');
-$routes->get('/PI/exportar',    'PI::exportar');
-$routes->get('/PI/pisLancados', 'PI::pisLancados');
-$routes->get('/PI/pisBaixados', 'PI::pisBaixados');
-$routes->get('/PI/expAthenas',  'PI::expAthenas');
+$routes->get('/',                   'PI::index');
+$routes->get('/PI/homologAPI',      'PI::homologAPI');
+$routes->get('/PI/exportar',        'PI::exportar');
+$routes->get('/PI/pisLancados',     'PI::pisLancados');
+$routes->get('/PI/pisBaixados',     'PI::pisBaixados');
+$routes->get('/PI/pisComissoes',    'PI::pisComissoes');
+$routes->get('/PI/expAthenas',      'PI::expAthenas');
+$routes->get('/PI/expComissoes',    'PI::expComissoes');
 
 //POST
-$routes->post('/PI/filtros',        'PI::filtros');
-$routes->post('/PI/export',         'PI::export');
-$routes->post('/PI/index',          'PI::index');
-$routes->post('/PI/homologAPI',     'PI::homologAPI');
-$routes->post('/PI/gravaStatus',    'PI::gravaStatus');
-$routes->post('/PI/pisLancados',    'PI::pisLancados');
-$routes->post('/PI/pisBaixados',    'PI::pisBaixados');
-$routes->post('/PI/expAthenas',     'PI::expAthenas');
-$routes->post('/PI/desfasBaixa/(:num)',    'PI::desfasBaixa/$1');
+$routes->post('/PI/filtros',            'PI::filtros');
+$routes->post('/PI/export',             'PI::export');
+$routes->post('/PI/index',              'PI::index');
+$routes->post('/PI/homologAPI',         'PI::homologAPI');
+$routes->post('/PI/gravaStatus',        'PI::gravaStatus');
+$routes->post('/PI/pisLancados',        'PI::pisLancados');
+$routes->post('/PI/pisBaixados',        'PI::pisBaixados');
+$routes->post('/PI/pisComissoes',       'PI::pisComissoes');
+$routes->post('/PI/expAthenas',         'PI::expAthenas');
+$routes->post('/PI/desfasBaixa/(:num)', 'PI::desfasBaixa/$1');
+$routes->get('/PI/expPIs',              'PI::expPIs');
 
 /*
  * --------------------------------------------------------------------
