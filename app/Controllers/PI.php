@@ -216,7 +216,11 @@ class PI extends BaseController
                 $sheet->setCellValue('A' . $rowNum, $pi['cliente']);
                 $sheet->setCellValue('B' . $rowNum, $pi['cliente_cnpj']);
                 $sheet->setCellValue('C' . $rowNum, $pi['data_da_venda']);
-                $sheet->setCellValue('D' . $rowNum, 'TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . " - " . $pi['descricao_servico'] . ' - DATA VEICULAÇÃO: ' . date('d/m/Y', strtotime(end($pi['periodo_veiculacao'])['periodo_ate'])) . ' PI: ' . $pi['nr_pi']);
+                if (count($pi['periodo_veiculacao']) == 0) {
+                    $sheet->setCellValue('D' . $rowNum, 'TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . " - " . $pi['descricao_servico'] . ' PI: ' . $pi['nr_pi']);
+                } else {
+                    $sheet->setCellValue('D' . $rowNum, 'TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . " - " . $pi['descricao_servico'] . ' - DATA VEICULAÇÃO: ' . date('d/m/Y', strtotime(end($pi['periodo_veiculacao'])['periodo_ate'])) . ' PI: ' . $pi['nr_pi']);
+                }                
                 $sheet->setCellValue('E' . $rowNum, $pi['tipo_de_fatura'] == "BRUTO C/ CLIENTE" ? str_replace(".", "", $pi['valor_bruto']) : str_replace(".", "", $pi['valor_liquido']));
                 $sheet->setCellValue('F' . $rowNum, '1007');
                 $sheet->setCellValue('G' . $rowNum, '2408102');
