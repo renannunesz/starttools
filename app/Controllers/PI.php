@@ -61,15 +61,15 @@ class PI extends BaseController
         $tbPIs = $this->pisModel->find();
 
         $pis_api_parametro = $this->getPI(date('Y-m-d'), date('Y-m-d'), 1);
-        $pisLancados_parametro = [];  
-        $pisBaixados_parametro = [];        
-        
+        $pisLancados_parametro = [];
+        $pisBaixados_parametro = [];
+
         foreach ($pis_api_parametro as $pi) {
             $piBaixado_parametro = array_search($pi['id_pi'], array_column($tbPIs, 'idpi'));
             if ($piBaixado_parametro == false) {
-                $pisLancados_parametro[] = $pi;                
+                $pisLancados_parametro[] = $pi;
             }
-        }     
+        }
 
         foreach ($pis_api_parametro as $pi) {
             $piBaixado_parametro = array_search($pi['id_pi'], array_column($tbPIs, 'idpi'));
@@ -79,15 +79,15 @@ class PI extends BaseController
         }
 
         $pis_api_adeo = $this->getPI(date('Y-m-d'), date('Y-m-d'), 2);
-        $pisLancados_adeo = [];  
-        $pisBaixados_adeo = [];        
-        
+        $pisLancados_adeo = [];
+        $pisBaixados_adeo = [];
+
         foreach ($pis_api_adeo as $pi) {
             $piBaixado_adeo = array_search($pi['id_pi'], array_column($tbPIs, 'idpi'));
             if ($piBaixado_adeo == false) {
                 $pisLancados_adeo[] = $pi;
             }
-        }     
+        }
 
         foreach ($pis_api_adeo as $pi) {
             $piBaixado_adeo = array_search($pi['id_pi'], array_column($tbPIs, 'idpi'));
@@ -96,7 +96,7 @@ class PI extends BaseController
             }
         }
 
-        return view('home',[
+        return view('home', [
             'pisLancados_parametro' => $pisLancados_parametro,
             'pisBaixados_parametro' => $pisBaixados_parametro,
             'pisLancados_adeo' => $pisLancados_adeo,
@@ -111,43 +111,10 @@ class PI extends BaseController
         $this->request->getPost('dtfimhomolog') == null ? $dtfimhomolog = date('Y-m-d') : $dtfimhomolog = $this->request->getPost('dtfimhomolog');
         $this->request->getPost('empresahomolog') == null ? $empresahomolog = 0 : $empresahomolog = $this->request->getPost('empresahomolog');
 
-        var_dump($dtinihomolog);
-        var_dump($dtfimhomolog);
-        var_dump($empresahomolog);
-        
+        $dados_pis = $this->getPI($dtinihomolog, $dtfimhomolog, $empresahomolog);
+
         return view('homolog', [
-            'dados_pi' => $this->getPI($dtinihomolog, $dtfimhomolog, $empresahomolog)
-        ]);
-    }
-
-    public function gravaStatus()
-    {
-
-        $this->pisModel->save($this->request->getPost());
-
-        $inpDataIni = $this->request->getPost('dataini');
-        $inpDataFim = $this->request->getPost('datafim');
-        $inpEmpresa = $this->request->getPost('empresapi');
-        $inpTipo    = $this->request->getPost('tppi');
-
-        $tbPIs = $this->pisModel->find();
-        $pis_api = $this->getPI($inpDataIni, $inpDataFim, $inpEmpresa);
-        $pisAbertos = [];
-
-        foreach ($pis_api as $pi) {
-            $pifechado = array_search($pi['id_pi'], array_column($tbPIs, 'idpi'));
-            if ($pifechado == false) {
-                $pisAbertos[] = $pi;
-            }
-        }
-
-        return view('home', [
-            'dados_pi'          => $pisAbertos,
-            'tbpis'             => $this->pisModel->find(),
-            'inputdataini'      => $inpDataIni,
-            'inputdatafim'      => $inpDataFim,
-            'inputempresa'      => $inpEmpresa,
-            'tipopi'            => $inpTipo
+            'dados_pi' => $dados_pis,
         ]);
     }
 
@@ -161,12 +128,12 @@ class PI extends BaseController
 
         $tbPIs = $this->pisModel->find();
         $pis_api = $this->getPI($inpDataIni, $inpDataFim, $inpEmpresa);
-        $pisAbertos = [];        
+        $pisAbertos = [];
 
         foreach ($pis_api as $pi) {
             $pifechado = array_search($pi['id_pi'], array_column($tbPIs, 'idpi'));
             if ($pifechado == false) {
-                $pisAbertos[] = $pi;                
+                $pisAbertos[] = $pi;
             }
         }
 
@@ -276,16 +243,47 @@ class PI extends BaseController
         $writer->save('php://output');
     }
 
+    public function gravaStatus()
+    {
+
+        $this->pisModel->save($this->request->getPost());
+
+        $inpDataIni = $this->request->getPost('dataini');
+        $inpDataFim = $this->request->getPost('datafim');
+        $inpEmpresa = $this->request->getPost('empresapi');
+        $inpTipo    = $this->request->getPost('tppi');
+
+        $tbPIs = $this->pisModel->find();
+        $pis_api = $this->getPI($inpDataIni, $inpDataFim, $inpEmpresa);
+        $pisAbertos = [];
+
+        foreach ($pis_api as $pi) {
+            $pifechado = array_search($pi['id_pi'], array_column($tbPIs, 'idpi'));
+            if ($pifechado == false) {
+                $pisAbertos[] = $pi;
+            }
+        }
+
+        return view('pis', [
+            'dados_pi'      => $pisAbertos,
+            'tbpis'         => $this->pisModel->find(),
+            'inputdataini'  => $inpDataIni,
+            'inputdatafim'  => $inpDataFim,
+            'inputempresa'  => $inpEmpresa,
+            'tipopi'        => $inpTipo
+        ]);
+    }
+
     public function desfasBaixa($idpi)
     {
+
+        $this->pisModel->where('idpi', $idpi)->delete();
 
         $inpDataIni = $this->request->getPost('dataini');
         $inpDataFim = $this->request->getPost('datafim');
         $inpEmpresa = $this->request->getPost('empresapi');
         $inpPI      = $this->request->getPost('idpi');
         $inpTipo    = $this->request->getPost('tppi');
-
-        $this->pisModel->where('idpi', $idpi)->delete();
 
         $tbPIs = $this->pisModel->find();
         $pis_api = $this->getPI($inpDataIni, $inpDataFim, $inpEmpresa);
@@ -298,7 +296,7 @@ class PI extends BaseController
             }
         }
 
-        return view('home', [
+        return view('pis', [
             'dados_pi'      => $pisFechados,
             'tbpis'         => $this->pisModel->find(),
             'inputdataini'  => $inpDataIni,
@@ -309,7 +307,7 @@ class PI extends BaseController
     }
 
     public function pisComissoes()
-    {        
+    {
         $this->request->getPost('dataPIini') == null ? $inpDataIni = date('Y-m-d') : $inpDataIni = $this->request->getPost('dataPIini');
         $this->request->getPost('dataPIfim') == null ? $inpDataFim = date('Y-m-d') : $inpDataFim = $this->request->getPost('dataPIfim');
         $this->request->getPost('empresaPI') == null ? $inpEmpresa = 0 : $inpEmpresa = $this->request->getPost('empresaPI');
@@ -324,16 +322,16 @@ class PI extends BaseController
             $VLTotal = $VLTotal + floatval($pi['valor_liquido']);
             $VCAtotal = $VCAtotal + floatval($pi['comissao_agencia']);
             $VCRtotal = $VCRtotal + floatval($pi['comissao_representante']);
-            $VCVtotal = $VCVtotal + floatval($pi['comissao_vendedor']);            
+            $VCVtotal = $VCVtotal + floatval($pi['comissao_vendedor']);
         }
 
-        return view('comissoes',[
+        return view('comissoes', [
             'inputdataini'  => $inpDataIni,
             'inputdatafim'  => $inpDataFim,
             'inputempresa'  => $inpEmpresa,
             'dados_pi' => $pis_api,
             'vl_total' => $VLTotal,
-            'vca_total' => $VCAtotal, 
+            'vca_total' => $VCAtotal,
             'vcr_total' => $VCRtotal,
             'vcv_total' => $VCVtotal,
         ]);
@@ -362,97 +360,18 @@ class PI extends BaseController
 
         $rowNum = 2;
 
-        foreach ($pis_api as $pi) {                     
-
-                $sheet->setCellValue('A' . $rowNum, $pi['nr_pi']);
-                $sheet->setCellValue('B' . $rowNum, $pi['data_da_venda']);
-                $sheet->setCellValue('C' . $rowNum, $pi['data_liberacao']);
-                $sheet->setCellValue('D' . $rowNum, $pi['cliente']);
-                $sheet->setCellValue('E' . $rowNum, $pi['vendedor']);
-                $sheet->setCellValue('F' . $rowNum, $pi['valor_liquido']);
-                $sheet->setCellValue('G' . $rowNum, $pi['comissao_agencia']);
-                $sheet->setCellValue('H' . $rowNum, $pi['comissao_representante']);
-                $sheet->setCellValue('I' . $rowNum, $pi['comissao_vendedor']);
-                $rowNum++;            
-        }
-
-        $sheet->setTitle('pis_athenas');
-        $writer = new Xlsx($spreadsheet);
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment; filename="pis_athenas_' . date("dmYHms") . '.xlsx"');
-        $writer->save('php://output');
-    }    
-
-    public function newHome()
-    {
-
-        return view('newHome');
-    }
-
-    public function newPIs()
-    {
-
-        return view('newpis');
-    }
-
-    public function expPIs()
-    {
-        $inpDataIni = "2023-01-01";
-        $inpDataFim = "2023-03-31";
-        $inpEmpresa = "0";
-
-        $tbPIs = $this->pisModel->find();
-        $pis_api = $this->getPI($inpDataIni, $inpDataFim, $inpEmpresa);
-
-        $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
-
-        $sheet->setCellValue('A1', 'Nome Cliente/Fornecedor');
-        $sheet->setCellValue('B1', 'CNPJ/CPF');
-        $sheet->setCellValue('C1', 'Data Registro');
-        $sheet->setCellValue('D1', 'Observação');
-        $sheet->setCellValue('E1', 'Valor Total');
-        $sheet->setCellValue('F1', 'Codigo Serviço');
-        $sheet->setCellValue('G1', 'Codigo IBGE');
-        $sheet->setCellValue('H1', 'Numero NF');
-        $sheet->setCellValue('I1', 'Codigo Produto');
-        $sheet->setCellValue('J1', 'Codigo Forma de Pagamento');
-        $sheet->setCellValue('K1', 'Endereço');
-        $sheet->setCellValue('L1', 'Bairro');
-        $sheet->setCellValue('M1', 'CEP');
-        $sheet->setCellValue('N1', 'UF');
-        $sheet->setCellValue('O1', 'Observacao da Parcela');
-        $sheet->setCellValue('P1', 'Email');
-        $sheet->setCellValue('Q1', 'Data Emissao');
-        $sheet->setCellValue('R1', 'Emitido por');
-        $sheet->setCellValue('S1', 'Empresa');
-
-        $rowNum = 2;
-
         foreach ($pis_api as $pi) {
 
-                $sheet->setCellValue('A' . $rowNum, $pi['cliente']);
-                $sheet->setCellValue('B' . $rowNum, $pi['cliente_cnpj']);
-                $sheet->setCellValue('C' . $rowNum, $pi['data_da_venda']);
-                $sheet->setCellValue('D' . $rowNum, 'TIPO DE PUBLICAÇÃO: ' . $pi['tipo_publicacao_pi'] . " - " . $pi['descricao_servico'] . ' - DATA VEICULAÇÃO: ' . date('d/m/Y', strtotime(end($pi['periodo_veiculacao'])['periodo_ate'])) . ' PI: ' . $pi['nr_pi']);
-                $sheet->setCellValue('E' . $rowNum, $pi['tipo_de_fatura'] == "BRUTO C/ CLIENTE" ? str_replace(".", "", $pi['valor_bruto']) : str_replace(".", "", $pi['valor_liquido']));
-                $sheet->setCellValue('F' . $rowNum, '1007');
-                $sheet->setCellValue('G' . $rowNum, '2408102');
-                $sheet->setCellValue('H' . $rowNum, $pi['id_pi']);
-                $sheet->setCellValue('I' . $rowNum, $pi['empresa_prestadora'] == "PARAMETRO AGENCIA DE NOTICIAS" ? '356028' : '354932');
-                $sheet->setCellValue('J' . $rowNum, '8');
-                $sheet->setCellValue('K' . $rowNum, $pi['endereco_cliente'] . " N: " . $pi['endereco_numero_cliente']);
-                $sheet->setCellValue('L' . $rowNum, $pi['bairro_cliente']);
-                $sheet->setCellValue('M' . $rowNum, $pi['cep_cliente']);
-                $sheet->setCellValue('N' . $rowNum, $pi['uf_cliente']);
-                $sheet->setCellValue('O' . $rowNum, $pi['nr_pi']);
-                $sheet->setCellValue('P' . $rowNum, $pi['send_mail_nf']);
-                $sheet->setCellValue('Q' . $rowNum, $pi['data_liberacao']);
-                $sheet->setCellValue('R' . $rowNum, $pi['emitido_por']);
-                $sheet->setCellValue('S' . $rowNum, $pi['empresa_prestadora']);
-
-                $rowNum++;
-
+            $sheet->setCellValue('A' . $rowNum, $pi['nr_pi']);
+            $sheet->setCellValue('B' . $rowNum, $pi['data_da_venda']);
+            $sheet->setCellValue('C' . $rowNum, $pi['data_liberacao']);
+            $sheet->setCellValue('D' . $rowNum, $pi['cliente']);
+            $sheet->setCellValue('E' . $rowNum, $pi['vendedor']);
+            $sheet->setCellValue('F' . $rowNum, $pi['valor_liquido']);
+            $sheet->setCellValue('G' . $rowNum, $pi['comissao_agencia']);
+            $sheet->setCellValue('H' . $rowNum, $pi['comissao_representante']);
+            $sheet->setCellValue('I' . $rowNum, $pi['comissao_vendedor']);
+            $rowNum++;
         }
 
         $sheet->setTitle('pis_athenas');
