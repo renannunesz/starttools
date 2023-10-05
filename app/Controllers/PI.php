@@ -312,9 +312,10 @@ class PI extends BaseController
 
     public function pisComissoes()
     {
+        
         $this->request->getPost('dataPIini') == null ? $inpDataIni = date('Y-m-d') : $inpDataIni = $this->request->getPost('dataPIini');
         $this->request->getPost('dataPIfim') == null ? $inpDataFim = date('Y-m-d') : $inpDataFim = $this->request->getPost('dataPIfim');
-        $this->request->getPost('empresaPI') == null ? $inpEmpresa = 0 : $inpEmpresa = $this->request->getPost('empresaPI');
+        $this->request->getPost('empresaPI') == null ? $inpEmpresa = 0 : $inpEmpresa = $this->request->getPost('empresaPI');        
 
         $pis_api = $this->getPI($inpDataIni, $inpDataFim, $inpEmpresa);
 
@@ -322,6 +323,7 @@ class PI extends BaseController
         $VCAtotal = 0;
         $VCRtotal = 0;
         $VCVtotal = 0;
+
         foreach ($pis_api as $pi) {
             $VLTotal = $VLTotal + floatval($pi['valor_liquido']);
             $VCAtotal = $VCAtotal + floatval($pi['comissao_agencia']);
@@ -343,9 +345,10 @@ class PI extends BaseController
 
     public function expComissoes()
     {
-        $this->request->getPost('dataPIini') == null ? $inpDataIni = date('Y-m-d') : $inpDataIni = $this->request->getPost('dataPIini');
-        $this->request->getPost('dataPIfim') == null ? $inpDataFim = date('Y-m-d') : $inpDataFim = $this->request->getPost('dataPIfim');
-        $this->request->getPost('empresaPI') == null ? $inpEmpresa = 0 : $inpEmpresa = $this->request->getPost('empresaPI');
+
+        $inpDataIni = $this->request->getPost('dataini');
+        $inpDataFim = $this->request->getPost('datafim');
+        $inpEmpresa = $this->request->getPost('empresapi');        
 
         $pis_api = $this->getPI($inpDataIni, $inpDataFim, $inpEmpresa);
 

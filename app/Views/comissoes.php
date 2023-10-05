@@ -106,12 +106,21 @@
                                         </form>
 
                                         <div class="">
-                                            <a href='<?php echo base_url('/PI/expComissoes'); ?>'>
-                                                <button class="btn btn-sm btn-success" type="submit" value="Filtrar" name="filtrar" id="filtrar" onclick="showLoad()">
-                                                    <i class="fas fa-fw fa-file-excel"></i>
-                                                    <span>Exportar</span>
-                                                </button>
-                                            </a>
+
+                                            <form action='<?php echo base_url('/PI/expComissoes'); ?>' method="post">
+
+                                                <input type="hidden" name="dataini" id="dataini" value="<?php echo $inputdataini; ?>">
+                                                <input type="hidden" name="datafim" id="datafim" value="<?php echo $inputdatafim; ?>">
+                                                <input type="hidden" name="empresapi" id="empresapi" value="<?php echo $inputempresa; ?>">
+
+                                                <div class="">
+                                                    <button class="btn btn-sm btn-success" type="submit">
+                                                        <i class="fas fa-fw fa-file-excel"></i>
+                                                        <span>Exportar</span>
+                                                    </button>
+                                                </div>
+                                            </form>
+
                                         </div>
 
                                     </div>

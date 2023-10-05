@@ -36,7 +36,7 @@ $routes->get('/PI/pisLancados',     'PI::pisLancados');
 $routes->get('/PI/pisBaixados',     'PI::pisBaixados');
 $routes->get('/PI/pisComissoes',    'PI::pisComissoes');
 $routes->get('/PI/expAthenas',      'PI::expAthenas');
-$routes->get('/PI/expComissoes',    'PI::expComissoes');
+$routes->get('/PI/expPIs',              'PI::expPIs');
 
 //POST
 $routes->post('/PI/filtros',            'PI::filtros');
@@ -48,8 +48,8 @@ $routes->post('/PI/pisLancados',        'PI::pisLancados');
 $routes->post('/PI/pisBaixados',        'PI::pisBaixados');
 $routes->post('/PI/pisComissoes',       'PI::pisComissoes');
 $routes->post('/PI/expAthenas',         'PI::expAthenas');
+$routes->post('/PI/expComissoes',    'PI::expComissoes');
 $routes->post('/PI/desfasBaixa/(:num)', 'PI::desfasBaixa/$1');
-$routes->get('/PI/expPIs',              'PI::expPIs');
 
 /*
  * --------------------------------------------------------------------
